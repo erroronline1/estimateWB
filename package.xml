@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<package format="1">
+  <name>estimate workbench</name>
+  <description>estimate values for calculating production costs of your creations</description>
+  <version>0.1</version>
+  <maintainer email="dev@erroronline.one">error on line 1</maintainer>
+  <license file="LICENSE">LGPL-3</license>
+  <url type="repository" branch="master">https://github.com/erroronline1/estimateWB</url>
+  <!--url type="documentation">https://wiki.freecad.org/...</url-->
+
+  <content>
+    <workbench>
+      <name>estimate</name>
+      <classname>estimateWorkbench</classname>
+      <description>estimate values for calculating production costs of your creations</description>
+      <version>0.1</version>
+      <subdirectory>./</subdirectory>
+      <icon>freecad/estimate/resources/icon.svg</icon>
+      <freecadmin>0.19.0</freecadmin>
+      <!--depend>numpy</depend-->
+      <tag>estimate</tag>
+      <tag>volume</tag>
+    </workbench>
+  </content>
+
+</package>
