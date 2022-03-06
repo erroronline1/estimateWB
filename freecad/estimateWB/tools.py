@@ -24,7 +24,7 @@ def report(msg):
 def volumeOf(name):
 	t = FreeCAD.ActiveDocument.getObjectsByLabel(name)[0]
 	if hasattr(t, 'Shape'):
-		return math.ceil(t.Shape.Volume/1000)
+		return math.ceil(t.Shape.Volume/10) / 100
 	else:
 		report("{0} has no shape nor volume".format(name))
 		return False
@@ -44,26 +44,10 @@ def estimateVolume(*void):
 	else:
 		report("please select a part or a body...")
 
-	
 def estimateWeight(material = None):
 	body = selectedBody()
 	volume = volumeOf(body)
 	if body and volume and material:
-		report("{0} needs approximate {1} g of {2}".format(body, volume * materials[material], material))
+		report("{0} needs approximate {1} g of {2}".format(body, math.ceil(volume * materials[material] * 100) / 100, material))
 	else:
 		report("please select a part or a body...")
-
-def estimateABSWeight():
-	estimateWeight('ABS')
-
-def estimatePA12Weight():
-	estimateWeight('PA12')
-	
-def estimatePCWeight():
-	estimateWeight('PC')
-		
-def estimatePLAWeight():
-	estimateWeight('PLA')
-
-def estimateTPUWeight():
-	estimateWeight('TPU')
