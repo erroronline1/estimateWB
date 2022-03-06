@@ -10,6 +10,7 @@ def listProperties():
 			FreeCAD.Console.PrintMessage("\n"+p)
 '''
 
+# supported materials. dependence with command-icons. name:density
 materials={
 	'ABS': 1.05,
 	'PA12': 1.01,
@@ -40,7 +41,7 @@ def estimateVolume(*void):
 	body = selectedBody()
 	volume = volumeOf(body)
 	if body and volume:
-		report("{0} has an approximate volume of {1} cm³".format(body, volume))
+		report("{0} has a volume of {1} cm³".format(body, volume))
 	else:
 		report("please select a part or a body...")
 
@@ -48,6 +49,6 @@ def estimateWeight(material = None):
 	body = selectedBody()
 	volume = volumeOf(body)
 	if body and volume and material:
-		report("{0} needs approximate {1} g of {2}".format(body, math.ceil(volume * materials[material] * 100) / 100, material))
+		report("{0} needs about {1} g of {2}".format(body, math.ceil(volume * materials[material] * 100) / 100, material))
 	else:
 		report("please select a part or a body...")
