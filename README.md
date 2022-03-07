@@ -13,6 +13,9 @@ it can be installed manually by adding the whole folder into the personal freeca
 
 - for linux `/home/username/.FreeCAD/Mod/`
 - for windows `%APPDATA%\FreeCAD\Mod\` or `C:\Users\username\Appdata\Roaming\FreeCAD\Mod\`
+- for windows as portable app `wherever_stored\FreeCADPortable\Data\FreeCADAppData\Mod`
+
+occasionally rename from estimateWB-master to estimateWB if downloaded as zip from github
 
 ## license
 
