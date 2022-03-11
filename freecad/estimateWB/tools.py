@@ -2,7 +2,7 @@ import math
 import FreeCAD, FreeCADGui
 from datetime import datetime
 
-'''# for developement
+'''# for development
 def listProperties():
 	sel = FreeCADGui.Selection.getSelection()
 	for obj in sel:
