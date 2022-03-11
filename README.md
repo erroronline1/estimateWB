@@ -1,22 +1,27 @@
-# estimateWB
-### a freecad workbench to estimate material quantity
+## Estimate Workbench 
 
-this frankenstein's monster of a workbench for freecad has been somehow sewn together to work almost as expected. the initial stage displays a selected body's volume rounded up to whole cm³. furthermore some materials are supported to calculate the volume with the materials density to get the expected weight. this estimation enables you to get or calculate the necessary amount of material for additive manufacturing (@100 % infill, ignoring support structures).
+A FreeCAD workbench to estimate material quantity
 
-i am quite new to freecad and creating workbenches but nonetheless excited.
+### Background
+This frankenstein's monster of a workbench for FreeCAD has been somehow sewn together to work almost as expected. The initial stage displays a selected body's volume rounded up to whole cm³. Furthermore, some materials are supported to calculate the volume with the material's density to get the expected weight. This estimation enables you to get or calculate the necessary amount of material for additive manufacturing (@100 % infill, ignoring support structures).
 
-the workbench has been tested with freecad 0.19
+**Note:** I am quite new to FreeCAD and creating workbenches but nonetheless excited.
 
-## installation 
+The workbench has been tested with FreeCAD v0.19
 
-it can be installed manually by adding the whole folder into the personal freecad folder
+### Installation 
 
-- for linux `/home/username/.FreeCAD/Mod/`
-- for windows `%APPDATA%\FreeCAD\Mod\` or `C:\Users\username\Appdata\Roaming\FreeCAD\Mod\`
-- for windows as portable app `wherever_stored\FreeCADPortable\Data\FreeCADAppData\Mod`
+#### Manual Installation
 
-occasionally rename from estimateWB-master to estimateWB if downloaded as zip from github
+This workbench can be installed manually by adding the whole folder into the personal FreeCAD folder
 
-## license
+- for Linux `/home/username/.FreeCAD/Mod/`
+- for macOS `/home/username/.FreeCAD/Mod/`
+- for Windows `%APPDATA%\FreeCAD\Mod\` or `C:\Users\username\Appdata\Roaming\FreeCAD\Mod\`
+- for Windows as portable app `wherever_stored\FreeCADPortable\Data\FreeCADAppData\Mod`
 
-estimateWB is released under the LGPL3+ license
+Occasionally rename from estimateWB-master to estimateWB if downloaded as zip from github
+
+## License
+
+estimateWB is released under the LGPL3+ license. See [LICENSE](LICENSE).
