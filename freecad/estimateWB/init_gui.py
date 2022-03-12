@@ -4,13 +4,13 @@ from . import ICONPATH, tools
 
 class estimateWB(FreeCADGui.Workbench):
 	MenuText = "Estimate"
-	ToolTip = "Display a bodys volume or weight to estimate costs of printing"
+	ToolTip = "Display a body's volume or weight to estimate costs of printing"
 	Icon = os.path.join(ICONPATH, 'icon.svg')
 	
 	commands = [
 		"Estimate_Volume"]
 	for type in tools.materials:
-			commands.append("Estimate_{}_Weight".format(type))
+		commands.append("Estimate_{}_Weight".format(type))
 
 	def Initialize(self):
 		"""This function is executed when FreeCAD starts"""
@@ -36,5 +36,5 @@ class estimateWB(FreeCADGui.Workbench):
 		# This function is mandatory if this is a full Python workbench
 		# This is not a template, the returned string should be exactly "Gui::PythonWorkbench"
 		return "Gui::PythonWorkbench"
-	   
+
 FreeCADGui.addWorkbench(estimateWB())
