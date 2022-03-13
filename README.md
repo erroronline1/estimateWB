@@ -15,10 +15,10 @@ The workbench has been tested with FreeCAD v0.19
 
 This workbench can be installed manually by adding the whole folder into the personal FreeCAD folder
 
-- for Linux `/home/username/.FreeCAD/Mod/`
-- for macOS `/home/username/.FreeCAD/Mod/`
+- for Linux `/home/user/.local/share/FreeCAD/Mod/`
 - for Windows `%APPDATA%\FreeCAD\Mod\` or `C:\Users\username\Appdata\Roaming\FreeCAD\Mod\`
 - for Windows as portable app `wherever_stored\FreeCADPortable\Data\FreeCADAppData\Mod`
+- for macOS `~/Library/Preferences/FreeCAD/Mod/`
 
 Occasionally rename from estimateWB-master to estimateWB if downloaded as zip from github
 
