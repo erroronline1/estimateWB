@@ -11,7 +11,7 @@ class BaseCommand():
 		pass
 
 	def IsActive(self):
-		return bool(tools.selectedBody())
+		return bool(tools.selectedObject())
 
 	def GetResources(self):
 		return {'Pixmap': self.pixmap,
@@ -19,7 +19,7 @@ class BaseCommand():
 				'ToolTip': self.toolTip}
 
 	def Activated(self):
-		FreeCADGui.doCommandGui("freecad.estimateWB.commands.{0}.do('{1}')".format(self.__class__.__name__, self.fnParams))
+		FreeCADGui.doCommandGui(f"freecad.estimateWB.commands.{self.__class__.__name__}.do('{self.fnParams}')")
 
 	@classmethod
 	def do(self, fnParams=None):
@@ -40,8 +40,7 @@ class Estimate_Weight(BaseCommand):
 	function = tools.estimateWeight
 	def __init__(self, fnParams):
 		self.fnParams = fnParams
-		self.name = "estimate weight in {}".format(fnParams)
-		self.pixmap = os.path.join(ICONPATH, "{}.svg".format(fnParams))
-		self.menuText = "weight in {}".format(fnParams)
-		self.toolTip = "selected body's approximate weight in {}".format(fnParams)
-
+		self.name = f"estimate weight in {fnParams}"
+		self.pixmap = os.path.join(ICONPATH, f"{fnParams}.svg")
+		self.menuText = f"weight in {fnParams}"
+		self.toolTip = f"selected body's approximate weight in {fnParams}"
