@@ -10,7 +10,7 @@ class estimateWB(FreeCADGui.Workbench):
 	commands = [
 		"Estimate_Volume"]
 	for type in tools.materials:
-		commands.append("Estimate_{}_Weight".format(type))
+		commands.append(f"Estimate_{type}_Weight")
 
 	def Initialize(self):
 		"""This function is executed when FreeCAD starts"""
@@ -20,7 +20,7 @@ class estimateWB(FreeCADGui.Workbench):
 
 		FreeCADGui.addCommand("Estimate_Volume", commands.Estimate_Volume())
 		for type in tools.materials:
-			FreeCADGui.addCommand("Estimate_{}_Weight".format(type), commands.Estimate_Weight(type))
+			FreeCADGui.addCommand(f"Estimate_{type}_Weight", commands.Estimate_Weight(type))
 
 	def Activated(self):
 		pass
