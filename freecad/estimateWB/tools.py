@@ -1,4 +1,3 @@
-import math
 import FreeCAD, FreeCADGui
 from datetime import datetime
 
@@ -20,35 +19,34 @@ materials={
 }
 
 def report(msg):
-	FreeCAD.Console.PrintMessage("\n{0} {1}".format(datetime.now().strftime("%H:%M:%S"), msg))
+	now=datetime.now().strftime("%H:%M:%S")
+	FreeCAD.Console.PrintMessage(f"\n{now} {msg}")
 
 def volumeOf(name):
 	t = FreeCAD.ActiveDocument.getObjectsByLabel(name)[0]
 	if hasattr(t, 'Shape'):
-		return math.ceil(t.Shape.Volume/10) / 100
+		return t.Shape.Volume / 1000
 	else:
-		report("{0} has no shape nor volume".format(name))
+		report(f"{name} has no shape nor volume")
 		return False
 
-def selectedBody():
+def selectedObject():
 	sel = FreeCADGui.Selection.getSelection()
-	if len(sel):
-		for obj in sel:
-			return obj.Label
-	return None
+	return sel[0].Label if len(sel) else None
 
 def estimateVolume(*void):
-	body = selectedBody()
-	volume = volumeOf(body)
-	if body and volume:
-		report("{0} has a volume of {1} cm³".format(body, volume))
+	object = selectedObject()
+	volume = volumeOf(object)
+	if object and volume:
+		report(f"{object} has a volume of {volume:.2f} cm³")
 	else:
 		report("please select a part or a body...")
 
 def estimateWeight(material = None):
-	body = selectedBody()
-	volume = volumeOf(body)
-	if body and volume and material:
-		report("{0} needs about {1} g of {2}".format(body, math.ceil(volume * materials[material] * 100) / 100, material))
+	object = selectedObject()
+	volume = volumeOf(object)
+	if object and volume and material:
+		mass = volume * materials[material]
+		report(f"{object} needs about {mass:.2f} g of {material}")
 	else:
 		report("please select a part or a body...")
