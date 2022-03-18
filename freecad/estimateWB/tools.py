@@ -6,8 +6,10 @@ from PySide import QtGui
 # supported materials. dependence with command-icons. name:density
 materials={
 	'ABS': 1.05,
+	'NYL': 1.08,
 	'PA12': 1.01,
 	'PC': 1.4,
+	'PETG': 1.27,
 	'PLA': 1.25,
 	'TPU': 1.22
 }
