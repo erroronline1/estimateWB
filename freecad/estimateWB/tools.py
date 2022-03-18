@@ -1,5 +1,6 @@
 import FreeCAD, FreeCADGui
 from datetime import datetime
+from decimal import Decimal, ROUND_UP
 
 '''# for development
 def listProperties():
@@ -22,6 +23,11 @@ def report(msg):
 	now=datetime.now().strftime("%H:%M:%S")
 	FreeCAD.Console.PrintMessage(f"\n{now} {msg}")
 
+def roundup(number):
+	precision = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Units").GetInt("Decimals")
+	precision = 2 if not precision else precision
+	return Decimal(number).quantize(Decimal("1e" + str(-precision)), rounding = ROUND_UP)
+
 def volumeOf(name):
 	t = FreeCAD.ActiveDocument.getObjectsByLabel(name)[0]
 	if hasattr(t, 'Shape'):
@@ -38,7 +44,7 @@ def estimateVolume(*void):
 	object = selectedObject()
 	volume = volumeOf(object)
 	if object and volume:
-		report(f"{object} has a volume of {volume:.2f} cm³")
+		report(f"{object} has a volume of {roundup(volume)} cm³")
 	else:
 		report("please select a part or a body...")
 
@@ -47,6 +53,6 @@ def estimateWeight(material = None):
 	volume = volumeOf(object)
 	if object and volume and material:
 		mass = volume * materials[material]
-		report(f"{object} needs about {mass:.2f} g of {material}")
+		report(f"{object} needs about {roundup(mass)} g of {material}")
 	else:
 		report("please select a part or a body...")
