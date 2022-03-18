@@ -13,6 +13,8 @@ Some common 3d-printing materials are supported by default, but you can always s
 
 The workbench has been tested with FreeCAD v0.19
 
+![screenshot](freecad/estimateWB/resources/screenshot.png)
+
 ### Installation 
 
 #### Manual Installation
