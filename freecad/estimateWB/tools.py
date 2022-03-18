@@ -1,14 +1,7 @@
 import FreeCAD, FreeCADGui
 from datetime import datetime
 from decimal import Decimal, ROUND_UP
-
-'''# for development
-def listProperties():
-	sel = FreeCADGui.Selection.getSelection()
-	for obj in sel:
-		for p in dir(obj):
-			FreeCAD.Console.PrintMessage("\n"+p)
-'''
+from PySide import QtGui
 
 # supported materials. dependence with command-icons. name:density
 materials={
@@ -51,8 +44,21 @@ def estimateVolume(*void):
 def estimateWeight(material = None):
 	object = selectedObject()
 	volume = volumeOf(object)
-	if object and volume and material:
-		mass = volume * materials[material]
-		report(f"{object} needs about {roundup(mass)} g of {material}")
+	if material == "None": # even None, if passed, ends up a string here
+		material = None
+	density = None
+	if object and volume:
+		if material:
+			density = materials[material]
+		else:
+			try:
+				density=float(QtGui.QInputDialog.getText(None, "Custom", "Enter density:")[0].replace(",","."))
+			except:
+				pass
+		if not density:
+			report("no density entered, please use decimal numbers only...")
+			return
+		mass = volume * density
+		report(f"{object} needs about {roundup(mass)} g {'of ' + material if material else ''}")
 	else:
 		report("please select a part or a body...")

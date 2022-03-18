@@ -32,7 +32,7 @@ class Estimate_Volume(BaseCommand):
 	function = tools.estimateVolume
 	pixmap = os.path.join(ICONPATH, "icon.svg")
 	menuText = "volume"
-	toolTip = "selected body's volume rounded up to whole cm³"
+	toolTip = "selected body's approximate volume in cm³"
 
 ###############################################################################
 
@@ -44,3 +44,10 @@ class Estimate_Weight(BaseCommand):
 		self.pixmap = os.path.join(ICONPATH, f"{fnParams}.svg")
 		self.menuText = f"weight in {fnParams}"
 		self.toolTip = f"selected body's approximate weight in {fnParams}"
+
+class Estimate_Weight_Custom(BaseCommand):
+	name = "estimate weight with custom density"
+	function = tools.estimateWeight
+	pixmap = os.path.join(ICONPATH, "none.svg")
+	menuText = "weight with custom density"
+	toolTip = "selected body's approximate weight with custom density"

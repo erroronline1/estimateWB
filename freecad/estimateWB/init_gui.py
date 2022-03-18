@@ -8,7 +8,7 @@ class estimateWB(FreeCADGui.Workbench):
 	Icon = os.path.join(ICONPATH, 'icon.svg')
 	
 	commands = [
-		"Estimate_Volume"]
+		"Estimate_Volume", "Estimate_Weight_Custom"]
 	for type in tools.materials:
 		commands.append(f"Estimate_{type}_Weight")
 
@@ -19,6 +19,7 @@ class estimateWB(FreeCADGui.Workbench):
 		self.appendMenu("Estimate", self.commands)
 
 		FreeCADGui.addCommand("Estimate_Volume", commands.Estimate_Volume())
+		FreeCADGui.addCommand("Estimate_Weight_Custom", commands.Estimate_Weight_Custom())
 		for type in tools.materials:
 			FreeCADGui.addCommand(f"Estimate_{type}_Weight", commands.Estimate_Weight(type))
 
