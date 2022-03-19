@@ -4,8 +4,8 @@ from . import ICONPATH, tools
 
 class estimateWB(FreeCADGui.Workbench):
 	MenuText = "Estimate"
-	ToolTip = "Display a body's volume or weight to estimate costs of printing"
-	Icon = os.path.join(ICONPATH, 'icon.svg')
+	ToolTip = tools.LANG.chunk("wbToolTip")[0] #"Display a body's volume or weight to estimate costs of printing"
+	Icon = os.path.join(ICONPATH, "icon.svg")
 	
 	commands = [
 		"Estimate_Volume", "Estimate_Weight_Custom"]

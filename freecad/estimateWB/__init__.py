@@ -1,2 +1,3 @@
 import os
 ICONPATH = os.path.join(os.path.dirname(__file__), "resources")
+LANGUAGEPATH = os.path.join(os.path.dirname(__file__), "languages")

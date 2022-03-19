@@ -1,7 +1,10 @@
-import FreeCAD, FreeCADGui
+import os
 from datetime import datetime
 from decimal import Decimal, ROUND_UP
+import json
+import FreeCAD, FreeCADGui
 from PySide import QtGui
+from . import LANGUAGEPATH
 
 # supported materials. dependence with command-icons. name:density
 materials={
@@ -15,7 +18,7 @@ materials={
 }
 
 def report(msg):
-	now=datetime.now().strftime("%H:%M:%S")
+	now = datetime.now().strftime("%H:%M:%S")
 	FreeCAD.Console.PrintMessage(f"\n{now} {msg}")
 
 def roundup(number):
@@ -28,7 +31,7 @@ def volumeOf(name):
 	if hasattr(t, 'Shape'):
 		return t.Shape.Volume / 1000
 	else:
-		report(f"{name} has no shape nor volume")
+		report(f"{name} {LANG.chunk('hasNoVolume')[0]}")
 		return False
 
 def selectedObject():
@@ -39,9 +42,9 @@ def estimateVolume(*void):
 	object = selectedObject()
 	volume = volumeOf(object)
 	if object and volume:
-		report(f"{object} has a volume of {roundup(volume)} cm³")
+		report(f"{object} {LANG.chunk('hasVolumeOf')[0]} {roundup(volume)} cm³")
 	else:
-		report("please select a part or a body...")
+		report(LANG.chunk('pleaseSelectPart')[0])
 
 def estimateWeight(material = None):
 	object = selectedObject()
@@ -54,13 +57,28 @@ def estimateWeight(material = None):
 			density = materials[material]
 		else:
 			try:
-				density=float(QtGui.QInputDialog.getText(None, "Custom", "Enter density:")[0].replace(",","."))
+				density = float(QtGui.QInputDialog.getText(None, LANG.chunk('densityPromptTitle')[0], LANG.chunk('densityPromptText')[0])[0].replace(",", "."))
 			except:
 				pass
 		if not density:
-			report("no density entered, please use decimal numbers only...")
+			report(LANG.chunk('noDensityEntered')[0])
 			return
 		mass = volume * density
-		report(f"{object} needs about {roundup(mass)} g {'of ' + material if material else ''}")
+		report(f"{object} {LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} g {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
 	else:
-		report("please select a part or a body...")
+		report(LANG.chunk('pleaseSelectPart')[0])
+
+class language():
+	def __init__(self):
+		self.sysLang = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/General").GetString("Language")
+		try:
+			'''load settings'''
+			with open(f'{os.path.join(LANGUAGEPATH, self.sysLang)}.json', 'r') as jsonfile:
+				self.language = json.loads(jsonfile.read().replace('\n', ''))
+		except:
+			with open(f'{os.path.join(LANGUAGEPATH, "English")}.json', 'r') as jsonfile:
+				self.language = json.loads(jsonfile.read().replace('\n', ''))
+
+	def chunk(self, chunk):
+		return self.language[chunk]
+LANG=language()

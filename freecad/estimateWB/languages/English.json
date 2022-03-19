@@ -1,0 +1,25 @@
+{
+    "wbToolTip":["Display a body's volume or weight to estimate costs of printing"],
+
+
+    "estimateVolumeName":["Estimate volume"],
+    "estimateVolumeMenuText":["Volume"],
+    "estimateVolumeToolTip":["Selected body's approximate volume in cm³"],
+    
+    "estimateWeightName":["Estimate weight in", ""],
+    "estimateWeightMenuText":["Weight in"],
+    "estimateWeightToolTip":["Selected body's approximate weight in"],
+    
+    "estimateWeightCustomName":["Estimate weight with custom density"],
+    "estimateWeightCustomMenuText":["Weight with custom density"],
+    "estimateWeightCustomToolTip":["Selected body's approximate weight with custom density"],
+
+
+    "hasNoVolume": ["has no shape nor volume"],
+    "hasVolumeOf": ["has a volume of"],
+    "needsMaterialOf": ["needs about", "of "],
+    "pleaseSelectPart": ["Please select a part or a body..."],
+    "densityPromptTitle": ["Custom"],
+    "densityPromptText": ["Enter density:"],
+    "noDensityEntered": ["No density entered, please use decimal numbers only..."]
+}

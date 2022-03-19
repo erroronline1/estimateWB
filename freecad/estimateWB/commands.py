@@ -28,11 +28,11 @@ class BaseCommand():
 ################################################################################
 
 class Estimate_Volume(BaseCommand):
-	name = "estimate volume"
+	name = tools.LANG.chunk("estimateVolumeName")[0]
 	function = tools.estimateVolume
 	pixmap = os.path.join(ICONPATH, "icon.svg")
-	menuText = "volume"
-	toolTip = "selected body's approximate volume in cm³"
+	menuText = tools.LANG.chunk("estimateVolumeMenuText")[0]
+	toolTip = tools.LANG.chunk("estimateVolumeToolTip")[0]
 
 ###############################################################################
 
@@ -40,14 +40,14 @@ class Estimate_Weight(BaseCommand):
 	function = tools.estimateWeight
 	def __init__(self, fnParams):
 		self.fnParams = fnParams
-		self.name = f"estimate weight in {fnParams}"
+		self.name = f"{tools.LANG.chunk('estimateWeightName')[0]} {fnParams} {tools.LANG.chunk('estimateWeightName')[1]}"
 		self.pixmap = os.path.join(ICONPATH, f"{fnParams}.svg")
-		self.menuText = f"weight in {fnParams}"
-		self.toolTip = f"selected body's approximate weight in {fnParams}"
+		self.menuText = f"{tools.LANG.chunk('estimateWeightMenuText')[0]} {fnParams}"
+		self.toolTip = f"{tools.LANG.chunk('estimateWeightToolTip')[0]} {fnParams}"
 
 class Estimate_Weight_Custom(BaseCommand):
-	name = "estimate weight with custom density"
+	name = tools.LANG.chunk('estimateWeightCustomName')[0]
 	function = tools.estimateWeight
 	pixmap = os.path.join(ICONPATH, "none.svg")
-	menuText = "weight with custom density"
-	toolTip = "selected body's approximate weight with custom density"
+	menuText = tools.LANG.chunk('estimateWeightCustomMenuText')[0]
+	toolTip = tools.LANG.chunk('estimateWeightCustomToolTip')[0]
