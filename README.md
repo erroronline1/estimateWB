@@ -17,7 +17,14 @@ The workbench has been tested with FreeCAD v0.19
 
 ### Installation 
 
+#### Automatic Installation (recommended)
+
+This workbench is available via the FreeCAD [Addon Manager](https://wiki.freecad.org/Std_AddonMgr).
+
 #### Manual Installation
+
+<details>
+<summary>Expand for directions to manually install this workbench</summary>
 
 This workbench can be installed manually by adding the whole folder into the personal FreeCAD folder
 
@@ -28,9 +35,16 @@ This workbench can be installed manually by adding the whole folder into the per
 
 Occasionally rename from estimateWB-master to estimateWB if downloaded as zip from github
 
+</details>
+
 ### Customize
 
 If you want to change standard materials you can do so by editing the materials-dictionary within tools.py and add a respective named icon to the ressources-folder. The list of buttons will update itself. If you are unsatisfied with the default densities you are free to edit these within the dictionary as well. 
+
+
+### Bug/Feedback
+
+Please report bugs to the [issue queue](https://github.com/erroronline1/estimateWB/issues) and ping the [dedicated estimateWB FreeCAD forum thread]() to discuss said issue or feedback in general.   
 
 ## License
 
