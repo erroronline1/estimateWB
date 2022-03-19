@@ -51,7 +51,7 @@ Occasionally rename from estimateWB-master to estimateWB if downloaded as zip fr
 
 If you want to change standard materials you can do so by editing the materials-dictionary within tools.py and add a respective named icon to the ressources-folder. The list of buttons will update itself. If you are unsatisfied with the default densities you are free to edit these within the dictionary as well.
 
-Different languages according to user settings are technically supported - but actually restricted to english by default and german due to my own limitations. This might be more proof-of-concept than actually useful but feel free to contribute :)
+Different languages according to user settings are technically supported - but actually restricted to english by default and german due to my own limitations. This might be more proof-of-concept than actually useful but feel free to contribute :) Since one does usually not switch languages by the minute I did not bother finding out how to update during runtime yet, so FreeCad has to be restarted to have language-changes take effect on this workbench.
 
 ### Bug/Feedback
 
