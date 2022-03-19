@@ -6,7 +6,7 @@
   <description>estimate material quantity</description>
   <maintainer email="dev@erroronline.one">error on line 1</maintainer>
   <license file="LICENSE">LGPLv3</license>
-  <icon>https://github.com/erroronline1/estimateWB/freecad/estimateWB/resources/icon.svg</icon>
+  <icon>freecad/estimateWB/resources/icon.svg</icon>
   <url type="repository" branch="master">https://github.com/erroronline1/estimateWB</url>
   <url type="readme">https://github.com/erroronline1/estimateWB/blob/master/README.md</url>
 
