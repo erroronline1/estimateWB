@@ -44,7 +44,7 @@ If you want to change standard materials you can do so by editing the materials-
 
 ### Bug/Feedback
 
-Please report bugs to the [issue queue](https://github.com/erroronline1/estimateWB/issues) and ping the [dedicated estimateWB FreeCAD forum thread]() to discuss said issue or feedback in general.   
+Please report bugs to the [issue queue](https://github.com/erroronline1/estimateWB/issues) and ping the [dedicated estimateWB FreeCAD forum thread](https://forum.freecadweb.org/viewtopic.php?f=22&t=67078) to discuss said issue or feedback in general.   
 
 ## License
 
