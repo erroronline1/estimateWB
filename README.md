@@ -13,7 +13,17 @@ Some common 3d-printing materials are supported by default, but you can always s
 
 The workbench has been tested with FreeCAD v0.19
 
-![screenshot](freecad/estimateWB/resources/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/erroronline1/estimateWB/master/freecad/estimateWB/resources/screenshot.png)
+
+### Usage
+
+Select an object, part, group or body and at the push of a button of the workbench the desired output is displayed in the report view panel.
+
+* The first option returns the volume of the selected object
+* The second option prompts you to provide a decimal density to return the estimated specific but custom weight
+* Any other option returns preset material weight estimations (currently ABS, NYLon, PA12, PolyCarbonate, PETG, PLA and TPU)
+
+Thats all. Basically the workbench reads the objects shape.volume-property provided by FreeCAD, which is conveniently returned in mm³. So any output will be in metric units and i won't bother optionally recalculate to imperial because science.
 
 ### Installation 
 
