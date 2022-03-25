@@ -14,6 +14,10 @@
     "estimateWeightCustomMenuText":["Gewicht mit spezifischer Materialdichte"],
     "estimateWeightCustomToolTip":["Ungefähres Gewicht des ausgewählten Körpers mit spezifischer Materialdichte"],
 
+    "scaleName":["Zeige Volumen in"],
+    "scaleMenuText":["Zeige Volumen in"],
+    "scaleToolTip":["Stellt die Anzeige des Volumens auf"],
+
 
     "hasNoVolume": ["hat keine Form oder Volumen"],
     "hasVolumeOf": ["hat ein Volumen von"],

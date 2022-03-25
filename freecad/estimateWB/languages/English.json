@@ -14,6 +14,9 @@
     "estimateWeightCustomMenuText":["Weight with custom density"],
     "estimateWeightCustomToolTip":["Selected body's approximate weight with custom density"],
 
+    "scaleName":["Display volume in"],
+    "scaleMenuText":["Display volume in"],
+    "scaleToolTip":["Set display of volume to"],
 
     "hasNoVolume": ["has no shape nor volume"],
     "hasVolumeOf": ["has a volume of"],

@@ -19,6 +19,12 @@ The workbench has been developed and tested with FreeCAD v0.19 and v0.20.27422 p
 
 Select an object, part, group or body and at the push of a button of the workbench the desired output is displayed in the report view panel.
 
+Two toolbars are available:
+
+**Scale**
+* Select the desired output for the volume in mm³, cm³ or m³
+
+**Estimate**
 * The first option returns the volume of the selected object
 * The second option prompts you to provide a decimal density to return the estimated specific but custom weight
 * Any other option returns preset material weight estimations (currently ABS, NYLon, PA12, PolyCarbonate, PETG, PLA and TPU)

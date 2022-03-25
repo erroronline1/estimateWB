@@ -4,18 +4,13 @@ from decimal import Decimal, ROUND_UP
 import json
 import FreeCAD, FreeCADGui
 from PySide import QtGui
-from . import LANGUAGEPATH
+from . import LANGUAGEPATH, ICONPATH
 
 # supported materials. dependence with command-icons. name:density
-materials={
-	'ABS': 1.05,
-	'NYL': 1.08,
-	'PA12': 1.01,
-	'PC': 1.4,
-	'PETG': 1.27,
-	'PLA': 1.25,
-	'TPU': 1.22
-}
+
+with open(os.path.join(ICONPATH, 'materials.json'), 'r') as jsonfile:
+		materials= json.loads(jsonfile.read().replace('\n', ''))
+CURRENTSCALE="cm"
 
 def report(msg):
 	now = datetime.now().strftime("%H:%M:%S")
@@ -29,7 +24,7 @@ def roundup(number):
 def volumeOf(name):
 	t = FreeCAD.ActiveDocument.getObjectsByLabel(name)[0]
 	if hasattr(t, 'Shape'):
-		return t.Shape.Volume / 1000
+		return t.Shape.Volume
 	else:
 		report(f"{name} {LANG.chunk('hasNoVolume')[0]}")
 		return False
@@ -41,14 +36,16 @@ def selectedObject():
 def estimateVolume(*void):
 	object = selectedObject()
 	volume = volumeOf(object)
+	factor={"mm": 1 , "cm": 1000, "m": 1000000}
 	if object and volume:
-		report(f"{object} {LANG.chunk('hasVolumeOf')[0]} {roundup(volume)} cm³")
+		volume /= factor[CURRENTSCALE]
+		report(f"{object} {LANG.chunk('hasVolumeOf')[0]} {roundup(volume)} {CURRENTSCALE}³")
 	else:
 		report(LANG.chunk('pleaseSelectPart')[0])
 
 def estimateWeight(material = None):
 	object = selectedObject()
-	volume = volumeOf(object)
+	volume = volumeOf(object) / 1000
 	if material == "None": # even None, if passed, ends up a string here
 		material = None
 	density = None
@@ -68,17 +65,19 @@ def estimateWeight(material = None):
 	else:
 		report(LANG.chunk('pleaseSelectPart')[0])
 
-class language():
+class language:
 	def __init__(self):
-		self.sysLang = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/General").GetString("Language")
 		try:
 			'''load settings'''
-			with open(f'{os.path.join(LANGUAGEPATH, self.sysLang)}.json', 'r') as jsonfile:
+			with open(f'{os.path.join(LANGUAGEPATH, FreeCAD.ParamGet("User parameter:BaseApp/Preferences/General").GetString("Language"))}.json', 'r') as jsonfile:
 				self.language = json.loads(jsonfile.read().replace('\n', ''))
 		except:
 			with open(f'{os.path.join(LANGUAGEPATH, "English")}.json', 'r') as jsonfile:
 				self.language = json.loads(jsonfile.read().replace('\n', ''))
-
 	def chunk(self, chunk):
 		return self.language[chunk]
 LANG=language()
+
+def setScale(to):
+	global CURRENTSCALE
+	CURRENTSCALE=to

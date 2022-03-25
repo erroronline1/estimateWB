@@ -8,6 +8,7 @@ class estimateWB(FreeCADGui.Workbench):
 	Icon = os.path.join(ICONPATH, "icon.svg")
 	
 	commands = [
+		"Scale_qmm", "Scale_qcm", "Scale_qm",
 		"Estimate_Volume", "Estimate_Weight_Custom"]
 	for type in tools.materials:
 		commands.append(f"Estimate_{type}_Weight")
@@ -15,9 +16,13 @@ class estimateWB(FreeCADGui.Workbench):
 	def Initialize(self):
 		"""This function is executed when FreeCAD starts"""
 		from . import commands #, import here all the needed files that create your FreeCAD commands
-		self.appendToolbar("Estimate", self.commands)
-		self.appendMenu("Estimate", self.commands)
+		self.appendToolbar("Scale", self.commands[:3])
+		self.appendMenu("Scale", self.commands[:3])
+		for type in ['mm', 'cm', 'm']:
+			FreeCADGui.addCommand(f"Scale_q{type}", commands.Set_Scale(type))
 
+		self.appendToolbar("Estimate", self.commands[3:])
+		self.appendMenu("Estimate", self.commands[3:])
 		FreeCADGui.addCommand("Estimate_Volume", commands.Estimate_Volume())
 		FreeCADGui.addCommand("Estimate_Weight_Custom", commands.Estimate_Weight_Custom())
 		for type in tools.materials:
