@@ -36,7 +36,7 @@ def selectedObject():
 def estimateVolume(*void):
 	object = selectedObject()
 	volume = volumeOf(object)
-	factor={"mm": 1 , "cm": 1000, "m": 1000000}
+	factor={"mm": 1 , "cm": 1000, "m": 1000000000}
 	if object and volume:
 		volume /= factor[CURRENTSCALE]
 		report(f"{object} {LANG.chunk('hasVolumeOf')[0]} {roundup(volume)} {CURRENTSCALE}³")
