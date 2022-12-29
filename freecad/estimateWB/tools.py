@@ -12,6 +12,13 @@ with open(os.path.join(ICONPATH, 'materials.json'), 'r') as jsonfile:
 		materials= json.loads(jsonfile.read().replace('\n', ''))
 CURRENTSCALE="cm"
 
+CURRENTUNIT="g"
+
+UNITSCALER = 1; # Defaults to grams
+
+def saveToClipboard(textToSave):
+	QtGui.QGuiApplication.clipboard().setText(textToSave)
+
 def report(msg):
 	now = datetime.now().strftime("%H:%M:%S")
 	FreeCAD.Console.PrintMessage(f"\n{now} {msg}")
@@ -61,7 +68,26 @@ def estimateWeight(material = None):
 			report(LANG.chunk('noDensityEntered')[0])
 			return
 		mass = volume * density
-		report(f"{object} {LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} g {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
+		mass = mass*UNITSCALER
+
+		report(f"{object} {LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
+
+		# Not sure this is the best way to report stuff in FreeCAD, not a whole lot of things open a new window. I just hate having to try and read
+		# the report view for each result.
+		msgBox = QtGui.QMessageBox() #QtGui.QMessageBox.NoIcon, "Weight result")
+		msgBox.setIcon(QtGui.QMessageBox.Information)
+		msgBox.setWindowTitle("Weight result") # TODO: Add window title language entry?
+		msgBox.setText(f"{object} {LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
+		msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+
+		# Adding the result to the clipboard
+		copyBtn = QtGui.QPushButton("Copy")
+		copyBtn.clicked.connect(lambda: saveToClipboard(f"{roundup(mass)}"))
+		msgBox.addButton(copyBtn, QtGui.QMessageBox.AcceptRole)
+		
+		# Show result message box
+		msgBox.exec()
+
 	else:
 		report(LANG.chunk('pleaseSelectPart')[0])
 
@@ -81,3 +107,16 @@ LANG=language()
 def setScale(to):
 	global CURRENTSCALE
 	CURRENTSCALE=to
+
+def setWeightUnit(weightUnit):
+	global CURRENTUNIT
+	global UNITSCALER
+	CURRENTUNIT = weightUnit
+
+	# why didn't I use a dictionary for this? lol
+	if (weightUnit == "g"):
+		UNITSCALER = 1
+	elif (weightUnit == "kg"):
+		UNITSCALER = 0.001
+	elif (weightUnit == "lb"):
+		UNITSCALER = 0.00220462262185

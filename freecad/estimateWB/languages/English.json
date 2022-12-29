@@ -23,6 +23,6 @@
     "needsMaterialOf": ["needs about", "of "],
     "pleaseSelectPart": ["Please select a part or a body..."],
     "densityPromptTitle": ["Custom"],
-    "densityPromptText": ["Enter density:"],
+    "densityPromptText": ["Enter density in g/cm^3:"],
     "noDensityEntered": ["No density entered, please use decimal numbers only..."]
 }
