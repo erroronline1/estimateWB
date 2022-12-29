@@ -18,6 +18,11 @@
     "scaleMenuText":["Display volume in"],
     "scaleToolTip":["Set display of volume to"],
 
+    "weightName":["Set weight unit to"],
+
+    "weightPopTitle":["Weight result"],
+    "weightPopCopy":["Copy"],
+
     "hasNoVolume": ["has no shape nor volume"],
     "hasVolumeOf": ["has a volume of"],
     "needsMaterialOf": ["needs about", "of "],

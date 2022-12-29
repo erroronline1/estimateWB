@@ -71,9 +71,9 @@ class Set_Weight_Unit(BaseCommand):
 	def __init__(self, fnParams):
 		# TODO: Add language options.
 		self.fnParams = fnParams 
-		self.name = f"Set weight unit to {fnParams}" #f"{tools.LANG.chunk('scaleName')[0]} {fnParams}"
+		self.name = f"{tools.LANG.chunk('weightName')[0]} {fnParams}" 
 		self.pixmap = os.path.join(ICONPATH, f"weight_{fnParams}.svg")
-		self.menuText = f"Set weight unit to {fnParams}" #f"{tools.LANG.chunk('scaleMenuText')[0]} {fnParams}"
-		self.toolTip = f"Set weight unit to {fnParams}" #f"{tools.LANG.chunk('scaleToolTip')[0]} {fnParams}"
+		self.menuText = f"{tools.LANG.chunk('weightName')[0]} {fnParams}" 
+		self.toolTip = f"{tools.LANG.chunk('weightName')[0]} {fnParams}" 
 	def IsActive(self):
 		return tools.CURRENTUNIT != self.fnParams

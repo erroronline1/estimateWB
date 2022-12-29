@@ -73,15 +73,15 @@ def estimateWeight(material = None):
 		report(f"{object} {LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
 
 		# Not sure this is the best way to report stuff in FreeCAD, not a whole lot of things open a new window. I just hate having to try and read
-		# the report view for each result.
-		msgBox = QtGui.QMessageBox() #QtGui.QMessageBox.NoIcon, "Weight result")
+		# the report view for each result. - zackwhit
+		msgBox = QtGui.QMessageBox() 
 		msgBox.setIcon(QtGui.QMessageBox.Information)
-		msgBox.setWindowTitle("Weight result") # TODO: Add window title language entry?
+		msgBox.setWindowTitle(LANG.chunk("weightPopTitle")[0])
 		msgBox.setText(f"{object} {LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
 		msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
 
 		# Adding the result to the clipboard
-		copyBtn = QtGui.QPushButton("Copy")
+		copyBtn = QtGui.QPushButton(LANG.chunk("weightPopCopy")[0])
 		copyBtn.clicked.connect(lambda: saveToClipboard(f"{roundup(mass)}"))
 		msgBox.addButton(copyBtn, QtGui.QMessageBox.AcceptRole)
 		
@@ -113,7 +113,7 @@ def setWeightUnit(weightUnit):
 	global UNITSCALER
 	CURRENTUNIT = weightUnit
 
-	# why didn't I use a dictionary for this? lol
+	# this is probably a terrible approach
 	if (weightUnit == "g"):
 		UNITSCALER = 1
 	elif (weightUnit == "kg"):
