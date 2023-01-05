@@ -18,11 +18,16 @@
     "scaleMenuText":["Display volume in"],
     "scaleToolTip":["Set display of volume to"],
 
+    "weightName":["Set weight unit to"],
+
+    "weightPopTitle":["Weight result"],
+    "weightPopCopy":["Copy"],
+
     "hasNoVolume": ["has no shape nor volume"],
     "hasVolumeOf": ["has a volume of"],
     "needsMaterialOf": ["needs about", "of "],
     "pleaseSelectPart": ["Please select a part or a body..."],
     "densityPromptTitle": ["Custom"],
-    "densityPromptText": ["Enter density:"],
+    "densityPromptText": ["Enter density in g/cm^3:"],
     "noDensityEntered": ["No density entered, please use decimal numbers only..."]
 }

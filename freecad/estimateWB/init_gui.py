@@ -1,4 +1,5 @@
 import os
+from re import A
 import FreeCADGui
 from . import ICONPATH, tools
 
@@ -9,6 +10,7 @@ class estimateWB(FreeCADGui.Workbench):
 	
 	commands = [
 		"Scale_qmm", "Scale_qcm", "Scale_qm",
+		"Weight_g", "Weight_kg", "Weight_lb",
 		"Estimate_Volume", "Estimate_Weight_Custom"]
 	for type in tools.materials:
 		commands.append(f"Estimate_{type}_Weight")
@@ -21,12 +23,20 @@ class estimateWB(FreeCADGui.Workbench):
 		for type in ['mm', 'cm', 'm']:
 			FreeCADGui.addCommand(f"Scale_q{type}", commands.Set_Scale(type))
 
-		self.appendToolbar("Estimate", self.commands[3:])
-		self.appendMenu("Estimate", self.commands[3:])
+		self.appendToolbar("Estimate", self.commands[6:])
+		self.appendMenu("Estimate", self.commands[6:])
 		FreeCADGui.addCommand("Estimate_Volume", commands.Estimate_Volume())
 		FreeCADGui.addCommand("Estimate_Weight_Custom", commands.Estimate_Weight_Custom())
 		for type in tools.materials:
 			FreeCADGui.addCommand(f"Estimate_{type}_Weight", commands.Estimate_Weight(type))
+
+		# Handles the weight units (move to selecting based on preferences in freeCAD?)
+		# I can foresee some cases in which you'd want to work in one unit system, yet
+		# display the volume or weight in a different unit system.
+		self.appendToolbar("Weight Units", self.commands[3:6])
+		self.appendMenu("Weight Units", self.commands[3:6])
+		for massUnit in ['lb', 'kg', 'g']:
+			FreeCADGui.addCommand(f"Weight_{massUnit}", commands.Set_Weight_Unit(massUnit))
 
 	def Activated(self):
 		pass
