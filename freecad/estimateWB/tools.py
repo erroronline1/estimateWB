@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from decimal import Decimal, ROUND_UP
+from decimal import Decimal, ROUND_HALF_UP
 import json
 import FreeCAD, FreeCADGui
 from PySide import QtGui
@@ -26,7 +26,7 @@ def report(msg):
 def roundup(number):
 	precision = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Units").GetInt("Decimals")
 	precision = 2 if not precision else precision
-	return Decimal(number).quantize(Decimal("1e" + str(-precision)), rounding = ROUND_UP)
+	return Decimal(number).quantize(Decimal("1e" + str(-precision)), rounding = ROUND_HALF_UP)
 
 def volumeOf(name):
 	t = FreeCAD.ActiveDocument.getObjectsByLabel(name)[0]
