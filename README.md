@@ -30,7 +30,7 @@ Three toolbars are available:
 **Weight Units**
 * Select the desired output for the weight in g, kg or lb 
 
-Thats all. Basically the workbench reads the objects shape.volume-property provided by FreeCAD, which is conveniently returned in mm³. So any output will be in metric units by default, lb work of [@zackwhit](#https://github.com/zackwhit/).
+Thats all. Basically the workbench reads the objects shape.volume-property provided by FreeCAD, which is conveniently returned in mm³. So any output will be in metric units by default, lb and weight units toolbar work of [@zackwhit](https://github.com/zackwhit/).
 
 ### Installation 
 
