@@ -9,9 +9,19 @@ You can display the volume or expected weight of a selected object at the push o
 
 Some common 3d-printing materials are supported by default, but you can always select the weight calculation with a custom selected density in g/cm³.
 
-The workbench has been developed and tested with FreeCAD v0.19 and v0.20.27422 pre-release, works in 0.21.2 and 1.0.0 RC1.
-
 ![screenshot](https://raw.githubusercontent.com/erroronline1/estimateWB/master/freecad/estimateWB/resources/screenshot.png)
+
+### Version compatibility
+
+<details>
+<summary>Confirmed latest stable FreeCad version 1.0 - Expand for more</summary>
+
+* 1.1rc build 40041 x86_64
+* 1.0
+* 0.21.2
+* 0.19
+
+</details>
 
 ### Usage
 
