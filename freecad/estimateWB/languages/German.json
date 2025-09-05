@@ -1,18 +1,18 @@
 {
-    "wbToolTip":["Zeigt das Volumen oder Gewicht eines Körpers an um Druckkosten einschätzen zu können"],
+    "wbToolTip":["Zeigt das Volumen oder Gewicht eines Kï¿½rpers an um Druckkosten einschï¿½tzen zu kï¿½nnen"],
 
 
     "estimateVolumeName":["Volumen bestimmen"],
     "estimateVolumeMenuText":["Volumen"],
-    "estimateVolumeToolTip":["Volumen des ausgewählten Körpers in cm³"],
+    "estimateVolumeToolTip":["Volumen des ausgewï¿½hlten Kï¿½rpers in cmï¿½"],
     
     "estimateWeightName":["Gewicht in", "bestimmen"],
     "estimateWeightMenuText":["Gewicht in"],
-    "estimateWeightToolTip":["Ungefähres Gewicht des ausgewählten Körpers in"],
+    "estimateWeightToolTip":["Ungefï¿½hres Gewicht des ausgewï¿½hlten Kï¿½rpers in"],
     
     "estimateWeightCustomName":["Gewicht mit spezifischer Materialdichte"],
     "estimateWeightCustomMenuText":["Gewicht mit spezifischer Materialdichte"],
-    "estimateWeightCustomToolTip":["Ungefähres Gewicht des ausgewählten Körpers mit spezifischer Materialdichte"],
+    "estimateWeightCustomToolTip":["Ungefï¿½hres Gewicht des ausgewï¿½hlten Kï¿½rpers mit spezifischer Materialdichte"],
 
     "scaleName":["Zeige Volumen in"],
     "scaleMenuText":["Zeige Volumen in"],
@@ -20,10 +20,10 @@
 
 
     "hasNoVolume": ["hat keine Form oder Volumen"],
-    "hasVolumeOf": ["hat ein Volumen von"],
-    "needsMaterialOf": ["benötigt etwa", ""],
-    "pleaseSelectPart": ["Bitte ein Teil oder Körper wählen..."],
+    "hasVolumeOf": ["Auswahl hat ein Volumen von"],
+    "needsMaterialOf": ["Auswahl benï¿½tigt etwa", ""],
     "densityPromptTitle": ["Spezifisch"],
     "densityPromptText": ["Materialdichte eingeben:"],
-    "noDensityEntered": ["Keine Materialdichte eingegeben. Bitte nur Dezimalzahlen verwenden..."]
+    "noDensityEntered": ["Keine Materialdichte eingegeben. Bitte nur Dezimalzahlen verwenden..."] ,
+    "selectionNoVolume" : [ "Keines der markierten Objekte hat ein Volumen!" ]
 }

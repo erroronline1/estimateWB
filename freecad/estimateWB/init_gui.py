@@ -1,9 +1,9 @@
 import os
-from re import A
 import FreeCADGui
 from . import ICONPATH, tools
 
 class estimateWB(FreeCADGui.Workbench):
+	
 	MenuText = "Estimate"
 	ToolTip = tools.LANG.chunk("wbToolTip")[0] #"Display a body's volume or weight to estimate costs of printing"
 	Icon = os.path.join(ICONPATH, "icon.svg")
@@ -12,6 +12,7 @@ class estimateWB(FreeCADGui.Workbench):
 		"Scale_qmm", "Scale_qcm", "Scale_qm",
 		"Weight_g", "Weight_kg", "Weight_lb",
 		"Estimate_Volume", "Estimate_Weight_Custom"]
+	
 	for type in tools.materials:
 		commands.append(f"Estimate_{type}_Weight")
 
@@ -48,9 +49,11 @@ class estimateWB(FreeCADGui.Workbench):
 		# self.appendContextMenu("My commands",self.list) # add commands to the context menu / right click
 		pass
 
+	# This function is mandatory if this is a full Python workbench
+	# This is not a template, the returned string should be exactly "Gui::PythonWorkbench"
+	
 	def GetClassName(self): 
-		# This function is mandatory if this is a full Python workbench
-		# This is not a template, the returned string should be exactly "Gui::PythonWorkbench"
 		return "Gui::PythonWorkbench"
+
 
 FreeCADGui.addWorkbench(estimateWB())
