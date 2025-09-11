@@ -24,10 +24,10 @@
     "weightPopCopy":["Copy"],
 
     "hasNoVolume": ["has no shape nor volume"],
-    "hasVolumeOf": ["has a volume of"],
-    "needsMaterialOf": ["needs about", "of "],
-    "pleaseSelectPart": ["Please select a part or a body..."],
+    "hasVolumeOf": ["Selection has a volume of"],
+    "needsMaterialOf": ["Selection needs about", "of "],
     "densityPromptTitle": ["Custom"],
     "densityPromptText": ["Enter density in g/cm^3:"],
-    "noDensityEntered": ["No density entered, please use decimal numbers only..."]
+    "noDensityEntered": ["No density entered, please use decimal numbers only..."] ,
+    "selectionNoVolume" : [ "None of the selected objects have a volume!" ]
 }

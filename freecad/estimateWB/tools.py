@@ -28,68 +28,90 @@ def roundup(number):
 	precision = 2 if not precision else precision
 	return Decimal(number).quantize(Decimal("1e" + str(-precision)), rounding = ROUND_HALF_UP)
 
-def volumeOf(name):
-	t = FreeCAD.ActiveDocument.getObjectsByLabel(name)[0]
-	if hasattr(t, 'Shape'):
-		return t.Shape.Volume
+def volumeOf( object ):
+	if hasattr(object, 'Shape'):
+		return object.Shape.Volume
 	else:
-		report(f"{name} {LANG.chunk('hasNoVolume')[0]}")
-		return False
-
-def selectedObject():
-	sel = FreeCADGui.Selection.getSelection()
-	return sel[0].Label if len(sel) else None
+		report(f"'{ object.Label }' {LANG.chunk('hasNoVolume')[0]}")
+		return 0.0
 
 def estimateVolume(*void):
-	object = selectedObject()
-	volume = volumeOf(object)
+	
+	objects = FreeCADGui.Selection.getSelection()
+
+	volume = 0.0
+
+	for object in objects:
+		volume += volumeOf(object)
+
+	if volume == 0:
+
+		if len(objects) > 1 :
+			report(LANG.chunk('selectionNoVolume')[0])
+
+		return
+
 	factor={"mm": 1 , "cm": 1000, "m": 1000000000}
-	if object and volume:
-		volume /= factor[CURRENTSCALE]
-		report(f"{object} {LANG.chunk('hasVolumeOf')[0]} {roundup(volume)} {CURRENTSCALE}³")
-	else:
-		report(LANG.chunk('pleaseSelectPart')[0])
+	
+	volume /= factor[CURRENTSCALE]
+	
+	report(f"{LANG.chunk('hasVolumeOf')[0]} {roundup(volume)} {CURRENTSCALE}³")
+
 
 def estimateWeight(material = None):
-	object = selectedObject()
-	volume = volumeOf(object) / 1000
+	
+	objects = FreeCADGui.Selection.getSelection()
+
+	volume = 0.0
+
+	for object in objects:
+		volume += volumeOf(object)
+		
+	if volume == 0:
+
+		if len(objects) > 1 :
+			report(LANG.chunk('selectionNoVolume')[0])
+
+		return
+
+	volume /= 1000
+	
 	if material == "None": # even None, if passed, ends up a string here
 		material = None
+	
 	density = None
-	if object and volume:
-		if material:
-			density = materials[material]
-		else:
-			try:
-				density = float(QtGui.QInputDialog.getText(None, LANG.chunk('densityPromptTitle')[0], LANG.chunk('densityPromptText')[0])[0].replace(",", "."))
-			except:
-				pass
-		if not density:
-			report(LANG.chunk('noDensityEntered')[0])
-			return
-		mass = volume * density
-		mass = mass*UNITSCALER
 
-		report(f"{object} {LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
-
-		# Not sure this is the best way to report stuff in FreeCAD, not a whole lot of things open a new window. I just hate having to try and read
-		# the report view for each result. - zackwhit
-		msgBox = QtGui.QMessageBox() 
-		msgBox.setIcon(QtGui.QMessageBox.Information)
-		msgBox.setWindowTitle(LANG.chunk("weightPopTitle")[0])
-		msgBox.setText(f"{object} {LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
-		msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
-
-		# Adding the result to the clipboard
-		copyBtn = QtGui.QPushButton(LANG.chunk("weightPopCopy")[0])
-		copyBtn.clicked.connect(lambda: saveToClipboard(f"{roundup(mass)}"))
-		msgBox.addButton(copyBtn, QtGui.QMessageBox.AcceptRole)
-		
-		# Show result message box
-		msgBox.exec()
-
+	if material:
+		density = materials[material]
 	else:
-		report(LANG.chunk('pleaseSelectPart')[0])
+		try:
+			density = float(QtGui.QInputDialog.getText(None, LANG.chunk('densityPromptTitle')[0], LANG.chunk('densityPromptText')[0])[0].replace(",", "."))
+		except:
+			pass
+	if not density:
+		report(LANG.chunk('noDensityEntered')[0])
+		return
+	
+	mass = volume * density
+	mass = mass*UNITSCALER
+
+	report(f"{LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
+
+	# Not sure this is the best way to report stuff in FreeCAD, not a whole lot of things open a new window. I just hate having to try and read
+	# the report view for each result. - zackwhit
+	msgBox = QtGui.QMessageBox() 
+	msgBox.setIcon(QtGui.QMessageBox.Information)
+	msgBox.setWindowTitle(LANG.chunk("weightPopTitle")[0])
+	msgBox.setText(f"{LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
+	msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+
+	# Adding the result to the clipboard
+	copyBtn = QtGui.QPushButton(LANG.chunk("weightPopCopy")[0])
+	copyBtn.clicked.connect(lambda: saveToClipboard(f"{roundup(mass)}"))
+	msgBox.addButton(copyBtn, QtGui.QMessageBox.AcceptRole)
+	
+	# Show result message box
+	msgBox.exec()
 
 class language:
 	def __init__(self):

@@ -1,5 +1,7 @@
 import FreeCADGui
 import os
+
+from FreeCADGui import Selection
 from . import ICONPATH
 from . import tools
 
@@ -31,7 +33,7 @@ class Estimate_Volume(BaseCommand):
 	menuText = tools.LANG.chunk("estimateVolumeMenuText")[0]
 	toolTip = tools.LANG.chunk("estimateVolumeToolTip")[0]
 	def IsActive(self):
-		return bool(tools.selectedObject())
+		return Selection.hasSelection()
 
 ###############################################################################
 
@@ -44,7 +46,7 @@ class Estimate_Weight(BaseCommand):
 		self.menuText = f"{tools.LANG.chunk('estimateWeightMenuText')[0]} {fnParams}"
 		self.toolTip = f"{tools.LANG.chunk('estimateWeightToolTip')[0]} {fnParams}"
 	def IsActive(self):
-		return bool(tools.selectedObject())
+		return Selection.hasSelection()
 
 class Estimate_Weight_Custom(BaseCommand):
 	name = tools.LANG.chunk('estimateWeightCustomName')[0]
@@ -53,7 +55,7 @@ class Estimate_Weight_Custom(BaseCommand):
 	menuText = tools.LANG.chunk('estimateWeightCustomMenuText')[0]
 	toolTip = tools.LANG.chunk('estimateWeightCustomToolTip')[0]
 	def IsActive(self):
-		return bool(tools.selectedObject())
+		return Selection.hasSelection()
 
 class Set_Scale(BaseCommand):
 	function = tools.setScale
