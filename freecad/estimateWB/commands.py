@@ -1,9 +1,9 @@
-import FreeCADGui
 import os
-
-from FreeCADGui import Selection
 from . import ICONPATH
 from . import tools
+
+import FreeCADGui
+from FreeCADGui import Selection
 
 class BaseCommand():
 	fnParams = None
@@ -71,7 +71,6 @@ class Set_Scale(BaseCommand):
 class Set_Weight_Unit(BaseCommand):
 	function = tools.setWeightUnit
 	def __init__(self, fnParams):
-		# TODO: Add language options.
 		self.fnParams = fnParams 
 		self.name = f"{tools.LANG.chunk('weightName')[0]} {fnParams}" 
 		self.pixmap = os.path.join(ICONPATH, f"weight_{fnParams}.svg")
@@ -79,3 +78,14 @@ class Set_Weight_Unit(BaseCommand):
 		self.toolTip = f"{tools.LANG.chunk('weightName')[0]} {fnParams}" 
 	def IsActive(self):
 		return tools.CURRENTUNIT != self.fnParams
+
+class Toggle_Report(BaseCommand):
+	function = tools.toggleReport
+	def __init__(self, fnParams):
+		self.fnParams = fnParams 
+		self.name = f"{tools.LANG.chunk('reportSet')[0]} {fnParams}{tools.LANG.chunk('reportSet')[1]}" 
+		self.pixmap = os.path.join(ICONPATH, f"report_{fnParams}.svg")
+		self.menuText = f"{tools.LANG.chunk('reportSet')[0]} {fnParams}{tools.LANG.chunk('reportSet')[1]}"
+		self.toolTip = f"{tools.LANG.chunk('reportSet')[0]} {fnParams}{tools.LANG.chunk('reportSet')[1]}"
+	def IsActive(self):
+		return self.fnParams != tools.CURRENTREPORT

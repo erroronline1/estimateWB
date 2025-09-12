@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="64.5mm"
+   height="64.5mm"
+   viewBox="0 0 64.499998 64.499998"
+   version="1.1"
+   id="svg1038"
+   sodipodi:docname="report_popup.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.8172158"
+     inkscape:cx="130.69444"
+     inkscape:cy="143.62631"
+     inkscape:window-width="1920"
+     inkscape:window-height="1130"
+     inkscape:window-x="912"
+     inkscape:window-y="1080"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1038" />
+  <metadata
+     id="metadata1044">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs1042" />
+  <g
+     id="layer1-7"
+     transform="matrix(1.0416667,0,0,1.0416667,-54.912051,-32.882291)"
+     style="stroke-width:0.96;fill:#ffffff;fill-opacity:1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.96;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:20.3;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect1-4"
+       width="51.281212"
+       height="48.920994"
+       x="58.349453"
+       y="38.066502" />
+  </g>
+  <rect
+     style="fill:#4b4b4b;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:20.3;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     id="rect1"
+     width="51.281212"
+     height="48.920994"
+     x="58.349453"
+     y="38.066502"
+     transform="translate(-51.412465,-30.276998)" />
+  <rect
+     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#bcbcbc;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:20.3;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
+     id="rect2"
+     width="19.218962"
+     height="7.1343117"
+     x="15.577283"
+     y="47.465015" />
+  <rect
+     style="font-variation-settings:normal;vector-effect:none;fill:#bababa;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:20.3;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000"
+     id="rect2-6"
+     width="19.218962"
+     height="7.1343117"
+     x="37.273136"
+     y="47.465015" />
+  <rect
+     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#0608ff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:20.3;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke"
+     id="rect3"
+     width="51.396164"
+     height="11.939052"
+     x="6.8431153"
+     y="7.7167044" />
+  <circle
+     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f92323;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:20.3;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke"
+     id="path2"
+     cx="52.269753"
+     cy="13.831828"
+     r="3.4943564" />
+  <circle
+     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#06b1ff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:20.3;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke"
+     id="path3"
+     cx="19.364559"
+     cy="32.031605"
+     r="8.8814898" />
+</svg>

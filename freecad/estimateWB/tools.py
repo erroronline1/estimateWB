@@ -2,18 +2,19 @@ import os
 from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 import json
-import FreeCAD, FreeCADGui
-from PySide import QtGui
 from . import LANGUAGEPATH, ICONPATH
+
+import FreeCAD
+import FreeCADGui
+from PySide import QtGui
 
 # supported materials. dependence with command-icons. name:density
 
 with open(os.path.join(ICONPATH, 'materials.json'), 'r') as jsonfile:
-		materials= json.loads(jsonfile.read().replace('\n', ''))
-CURRENTSCALE="cm"
-
-CURRENTUNIT="g"
-
+		materials = json.loads(jsonfile.read().replace('\n', ''))
+CURRENTSCALE = "cm"
+CURRENTUNIT = "g"
+CURRENTREPORT = "console"
 UNITSCALER = 1; # Defaults to grams
 
 def saveToClipboard(textToSave):
@@ -22,6 +23,23 @@ def saveToClipboard(textToSave):
 def report(msg):
 	now = datetime.now().strftime("%H:%M:%S")
 	FreeCAD.Console.PrintMessage(f"\n{now} {msg}")
+
+def msgbox(title, msg, copy):
+	# Not sure this is the best way to report stuff in FreeCAD, not a whole lot of things open a new window. I just hate having to try and read
+	# the report view for each result. - zackwhit
+	msgBox = QtGui.QMessageBox() 
+	msgBox.setIcon(QtGui.QMessageBox.Information)
+	msgBox.setWindowTitle(title)
+	msgBox.setText(msg)
+	msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+
+	# Adding the result to the clipboard
+	copyBtn = QtGui.QPushButton(LANG.chunk("weightPopCopy")[0])
+	copyBtn.clicked.connect(lambda: saveToClipboard(copy))
+	msgBox.addButton(copyBtn, QtGui.QMessageBox.AcceptRole)
+	
+	# Show result message box
+	msgBox.exec()
 
 def roundup(number):
 	precision = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Units").GetInt("Decimals")
@@ -55,7 +73,11 @@ def estimateVolume(*void):
 	
 	volume /= factor[CURRENTSCALE]
 	
-	report(f"{LANG.chunk('hasVolumeOf')[0]} {roundup(volume)} {CURRENTSCALE}³")
+	msg = f"{LANG.chunk('hasVolumeOf')[0]} {str(roundup(volume))} {CURRENTSCALE}³"
+	if CURRENTREPORT == "console":
+		report(msg)
+	if CURRENTREPORT == "popup":
+		msgbox(LANG.chunk("volumePopTitle")[0], msg, f"{str(roundup(volume))}")
 
 
 def estimateWeight(material = None):
@@ -95,23 +117,11 @@ def estimateWeight(material = None):
 	mass = volume * density
 	mass = mass*UNITSCALER
 
-	report(f"{LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
-
-	# Not sure this is the best way to report stuff in FreeCAD, not a whole lot of things open a new window. I just hate having to try and read
-	# the report view for each result. - zackwhit
-	msgBox = QtGui.QMessageBox() 
-	msgBox.setIcon(QtGui.QMessageBox.Information)
-	msgBox.setWindowTitle(LANG.chunk("weightPopTitle")[0])
-	msgBox.setText(f"{LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}")
-	msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
-
-	# Adding the result to the clipboard
-	copyBtn = QtGui.QPushButton(LANG.chunk("weightPopCopy")[0])
-	copyBtn.clicked.connect(lambda: saveToClipboard(f"{roundup(mass)}"))
-	msgBox.addButton(copyBtn, QtGui.QMessageBox.AcceptRole)
-	
-	# Show result message box
-	msgBox.exec()
+	msg = f"{LANG.chunk('needsMaterialOf')[0]} {roundup(mass)} {CURRENTUNIT} {LANG.chunk('needsMaterialOf')[1] + material if material else ''}"	
+	if CURRENTREPORT == "console":
+		report(msg)
+	if CURRENTREPORT == "popup":
+		msgbox(LANG.chunk("weightPopTitle")[0], msg, f"{roundup(mass)}")
 
 class language:
 	def __init__(self):
@@ -124,11 +134,11 @@ class language:
 				self.language = json.loads(jsonfile.read().replace('\n', ''))
 	def chunk(self, chunk):
 		return self.language[chunk]
-LANG=language()
+LANG = language()
 
 def setScale(to):
 	global CURRENTSCALE
-	CURRENTSCALE=to
+	CURRENTSCALE = to
 
 def setWeightUnit(weightUnit):
 	global CURRENTUNIT
@@ -142,3 +152,7 @@ def setWeightUnit(weightUnit):
 		UNITSCALER = 0.001
 	elif (weightUnit == "lb"):
 		UNITSCALER = 0.00220462262185
+
+def toggleReport(toggle):
+	global CURRENTREPORT
+	CURRENTREPORT = toggle

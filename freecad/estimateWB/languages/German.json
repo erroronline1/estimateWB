@@ -1,29 +1,44 @@
 {
-    "wbToolTip":["Zeigt das Volumen oder Gewicht eines Körpers an um Druckkosten einschätzen zu können"],
+    "wbToolTip": [
+        "Zeigt das Volumen oder Gewicht eines Körpers an um Druckkosten einschätzen zu können"
+    ],
 
+    "reportName": ["Ergebnisdarstellung"],
+    "reportMenuText": ["Ergebnisdarstellung"],
+    "reportToolTip": ["Konsole und Popup aktivieren/deaktivieren"],
+    "reportSet": ["Schalte", "-Ausgabe um"],
 
-    "estimateVolumeName":["Volumen bestimmen"],
-    "estimateVolumeMenuText":["Volumen"],
-    "estimateVolumeToolTip":["Volumen des ausgewählten Körpers in cm³"],
-    
-    "estimateWeightName":["Gewicht in", "bestimmen"],
-    "estimateWeightMenuText":["Gewicht in"],
-    "estimateWeightToolTip":["Ungefähres Gewicht des ausgewählten Körpers in"],
-    
-    "estimateWeightCustomName":["Gewicht mit spezifischer Materialdichte"],
-    "estimateWeightCustomMenuText":["Gewicht mit spezifischer Materialdichte"],
-    "estimateWeightCustomToolTip":["Ungefähres Gewicht des ausgewählten Körpers mit spezifischer Materialdichte"],
+    "estimateVolumeName": ["Volumen bestimmen"],
+    "estimateVolumeMenuText": ["Volumen"],
+    "estimateVolumeToolTip": ["Volumen des ausgewählten Körpers in cm³"],
 
-    "scaleName":["Zeige Volumen in"],
-    "scaleMenuText":["Zeige Volumen in"],
-    "scaleToolTip":["Stellt die Anzeige des Volumens auf"],
+    "estimateWeightName": ["Gewicht in", "bestimmen"],
+    "estimateWeightMenuText": ["Gewicht in"],
+    "estimateWeightToolTip": ["Ungefähres Gewicht des ausgewählten Körpers in"],
 
+    "estimateWeightCustomName": ["Gewicht mit spezifischer Materialdichte"],
+    "estimateWeightCustomMenuText": ["Gewicht mit spezifischer Materialdichte"],
+    "estimateWeightCustomToolTip": [
+        "Ungefähres Gewicht des ausgewählten Körpers mit spezifischer Materialdichte"
+    ],
+
+    "scaleName": ["Zeige Volumen in"],
+    "scaleMenuText": ["Zeige Volumen in"],
+    "scaleToolTip": ["Stellt die Anzeige des Volumens auf"],
+
+    "weightName": ["Stelle Gewichtseinheit auf"],
+
+    "volumePopTitle": ["Volumen Ergebnis"],
+    "weightPopTitle": ["Gweicht Ergebnis"],
+    "weightPopCopy": ["kopieren"],
 
     "hasNoVolume": ["hat keine Form oder Volumen"],
     "hasVolumeOf": ["Auswahl hat ein Volumen von"],
     "needsMaterialOf": ["Auswahl benätigt etwa", ""],
     "densityPromptTitle": ["Spezifisch"],
     "densityPromptText": ["Materialdichte eingeben:"],
-    "noDensityEntered": ["Keine Materialdichte eingegeben. Bitte nur Dezimalzahlen verwenden..."] ,
-    "selectionNoVolume" : [ "Keines der markierten Objekte hat ein Volumen!" ]
+    "noDensityEntered": [
+        "Keine Materialdichte eingegeben. Bitte nur Dezimalzahlen verwenden..."
+    ],
+    "selectionNoVolume": ["Keines der markierten Objekte hat ein Volumen!"]
 }
