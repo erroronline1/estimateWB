@@ -1,11 +1,11 @@
 ## Estimate Workbench 
 
-A FreeCAD workbench to estimate material quantity
+A FreeCAD workbench to estimate material quantity by volume or weight or selected parts
 
 ### Background
 This frankenstein's monster of a workbench for FreeCAD has been somehow sewn together to work almost as expected.
 
-You can display the volume or expected weight of a selected object at the push of a button. Both display with the decimal precision as set in FreeCAD's settings (2 by default if not specified). Rounding has been adjusted to ignore floating point offsets and limit confusion with defined 1cm³ cubes displaying 1.01 cm³. This might lead to a slight but most likely negligible rounding error, as the output enables you to estimate or calculate the necessary amount of material for additive manufacturing - @100 % infill, ignoring support structures, purging and other slicer settings that add anyway.
+You can display the volume or expected weight of selected objects at the push of a button. Both display with the decimal precision as set in FreeCAD's settings (2 by default if not specified). Rounding has been adjusted to ignore floating point offsets and limit confusion with defined 1cm³ cubes displaying 1.01 cm³. This might lead to a slight but most likely negligible rounding error, as the output enables you to estimate or calculate the necessary amount of material for additive manufacturing - @100 % infill, ignoring support structures, purging and other slicer settings that add anyway.
 
 Some common 3d-printing materials are supported by default, but you can always select the weight calculation with a custom selected density in g/cm³.
 
@@ -25,9 +25,12 @@ Some common 3d-printing materials are supported by default, but you can always s
 
 ### Usage
 
-Select an object, part, group or body and at the push of a button of the workbench the desired output is displayed in the report view panel.
+Select an object, part, group or body and at the push of a button of the workbench the desired output is displayed in the report view panel or as a popup.
 
-Three toolbars are available:
+Four toolbars are available:
+
+**Report**
+* Select the desired report mode for report view or popup
 
 **Scale**
 * Select the desired output for the volume in mm³, cm³ or m³
@@ -40,7 +43,9 @@ Three toolbars are available:
 **Weight Units**
 * Select the desired output for the weight in g, kg or lb 
 
-Thats all. Basically the workbench reads the objects shape.volume-property provided by FreeCAD, which is conveniently returned in mm³. So any output will be in metric units by default, lb and weight units toolbar work of [@zackwhit](https://github.com/zackwhit/).
+Thats all. Basically the workbench reads the objects shape.volume-property provided by FreeCAD, which is conveniently returned in mm³. So any output will be in metric units by default, lb and weight units toolbar work of [@zackwhit](https://github.com/zackwhit/). They also added a popup that has been applied to the volume as well in version 0.1.4 - now toggleable for either report view or popup.
+
+[@PhoneDroid](https://github.com/PhoneDroid) added the result for all *selected* parts.
 
 ### Installation 
 
@@ -55,7 +60,7 @@ This workbench is available via the FreeCAD [Addon Manager](https://wiki.freecad
 
 This workbench can be installed manually by adding the whole folder into the personal FreeCAD folder
 
-- for Linux `/home/user/.local/share/FreeCAD/Mod/`
+- for Linux `~/.local/share/FreeCAD/Mod/` or `~/.var/app/org.freecad.FreeCAD/data/FreeCAD/Mod`
 - for Windows `%APPDATA%\FreeCAD\Mod\` or `C:\Users\username\Appdata\Roaming\FreeCAD\Mod\`
 - for Windows as portable app `wherever_stored\FreeCADPortable\Data\FreeCADAppData\Mod`
 - for macOS `~/Library/Preferences/FreeCAD/Mod/`
