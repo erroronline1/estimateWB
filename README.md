@@ -1,6 +1,6 @@
 ## Estimate Workbench 
 
-A FreeCAD workbench to estimate material quantity by volume or weight or selected parts
+A FreeCAD workbench to estimate material quantity by volume or weight for selected parts
 
 ### Background
 This frankenstein's monster of a workbench for FreeCAD has been somehow sewn together to work almost as expected.
@@ -45,7 +45,7 @@ Four toolbars are available:
 
 Thats all. Basically the workbench reads the objects shape.volume-property provided by FreeCAD, which is conveniently returned in mm³. So any output will be in metric units by default, lb and weight units toolbar work of [@zackwhit](https://github.com/zackwhit/). They also added a popup that has been applied to the volume as well in version 0.1.4 - now toggleable for either report view or popup.
 
-[@PhoneDroid](https://github.com/PhoneDroid) added the result for all *selected* parts.
+[@PhoneDroid](https://github.com/PhoneDroid) added the result for *all selected* parts.
 
 ### Installation 
 
