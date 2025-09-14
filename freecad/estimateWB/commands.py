@@ -1,91 +1,105 @@
-import os
-from . import ICONPATH
-from . import tools
+from .resources import icon, LANG
+from . import tools, estimateSettings
+import json
 
 import FreeCADGui
 from FreeCADGui import Selection
 
 class BaseCommand():
-	fnParams = None
+	"""
+		TMYK: here the commands are defined by child classes, each their own
+		* name
+		* function
+		* pixmap (icon)
+		* menu text
+		* tooltip
+
+		available commands (classes extending the base command) are initialized with their
+		respective properties before FreeCAD calls their methods on interaction
+	"""
+	fnParams = {}
 	FreeCADGui.doCommandGui("import freecad.estimateWB.commands")
 
 	def __init__(self):
 		pass
 
 	def GetResources(self):
-		return {'Pixmap': self.pixmap,
-				'MenuText': self.menuText,
-				'ToolTip': self.toolTip}
+		return {"Pixmap": self.pixmap,
+				"MenuText": self.menuText,
+				"ToolTip": self.toolTip}
 
 	def Activated(self):
-		FreeCADGui.doCommandGui(f"freecad.estimateWB.commands.{self.__class__.__name__}.do('{self.fnParams}')")
+		"""
+			as opposed to the online ressources the parameters are converted to a tuple and json for string passing
+			this allows for multiple parameters for commands
+		"""
+		FreeCADGui.doCommandGui(f"freecad.estimateWB.commands.{self.__class__.__name__}.do('{json.dumps(self.fnParams)}')")
 
 	@classmethod
-	def do(self, fnParams=None):
-		self.function(fnParams)
+	def do(self, fnParams:str = ""):
+		"""
+			reconvert the former passed string back to a tuple and spread as non keyword parameters
+		"""
+		self.function(*json.loads(fnParams))
 
 ################################################################################
 
 class Estimate_Volume(BaseCommand):
-	name = tools.LANG.chunk("estimateVolumeName")[0]
+	# TMYK: without a parameter for the function the command can be set up just like this
+	name = LANG.chunk("estimateVolumeName")
 	function = tools.estimateVolume
-	pixmap = os.path.join(ICONPATH, "icon.svg")
-	menuText = tools.LANG.chunk("estimateVolumeMenuText")[0]
-	toolTip = tools.LANG.chunk("estimateVolumeToolTip")[0]
+	pixmap = icon("icon")
+	menuText = LANG.chunk("estimateVolumeName")
+	toolTip = LANG.chunk("estimateVolumeToolTip")
 	def IsActive(self):
 		return Selection.hasSelection()
 
-###############################################################################
+################################################################################
 
 class Estimate_Weight(BaseCommand):
+	# TMYK: with a parameter for the function the command has to be set up with __init__
 	function = tools.estimateWeight
-	def __init__(self, fnParams):
+	def __init__(self, *fnParams):
 		self.fnParams = fnParams
-		self.name = f"{tools.LANG.chunk('estimateWeightName')[0]} {fnParams} {tools.LANG.chunk('estimateWeightName')[1]}"
-		self.pixmap = os.path.join(ICONPATH, f"{fnParams}.svg")
-		self.menuText = f"{tools.LANG.chunk('estimateWeightMenuText')[0]} {fnParams}"
-		self.toolTip = f"{tools.LANG.chunk('estimateWeightToolTip')[0]} {fnParams}"
+		self.name = LANG.chunk("estimateWeightName", {":option": fnParams[0]})
+		self.pixmap = icon(fnParams[0])
+		self.menuText = LANG.chunk("estimateWeightName", {":option": fnParams[0]})
+		self.toolTip = LANG.chunk("estimateWeightToolTip", {":option": fnParams[0]})
 	def IsActive(self):
 		return Selection.hasSelection()
 
 class Estimate_Weight_Custom(BaseCommand):
-	name = tools.LANG.chunk('estimateWeightCustomName')[0]
+	name = LANG.chunk("estimateWeightCustomName")
 	function = tools.estimateWeight
-	pixmap = os.path.join(ICONPATH, "none.svg")
-	menuText = tools.LANG.chunk('estimateWeightCustomMenuText')[0]
-	toolTip = tools.LANG.chunk('estimateWeightCustomToolTip')[0]
+	pixmap = icon("none")
+	menuText = LANG.chunk("estimateWeightCustomName")
+	toolTip = LANG.chunk("estimateWeightCustomToolTip")
 	def IsActive(self):
 		return Selection.hasSelection()
 
-class Set_Scale(BaseCommand):
-	function = tools.setScale
-	def __init__(self, fnParams):
+################################################################################
+
+class Set_estimateSettings(BaseCommand):
+	"""
+		currently supported fnParams are
+		* sizeScale - mm, cm and m
+		* weightUnit - g, kg and lb
+		* reportOutput - console and popup
+
+		icons have to be named accordingly fnParams[0]_fnParams[1].svg
+		language chunks as well
+
+		see __init__.py and languages/*.json
+	"""
+	function = estimateSettings.set
+	def __init__(self, *fnParams):
 		self.fnParams = fnParams
-		self.name = f"{tools.LANG.chunk('scaleName')[0]} {fnParams}"
-		self.pixmap = os.path.join(ICONPATH, f"scale{fnParams}.svg")
-		self.menuText = f"{tools.LANG.chunk('scaleMenuText')[0]} {fnParams}"
-		self.toolTip = f"{tools.LANG.chunk('scaleToolTip')[0]} {fnParams}"
+		setting, value = fnParams
+		self.name = LANG.chunk(setting + "_Setting", {":option": value})
+		self.pixmap = icon(f"{setting}_{value}")
+		self.menuText = LANG.chunk(setting + "_Setting", {":option": value})
+		self.toolTip = LANG.chunk(setting + "_Setting", {":option": value})
 	def IsActive(self):
-		return tools.CURRENTSCALE != self.fnParams
+		setting, value = self.fnParams
+		return estimateSettings.get(setting) != value
 
-class Set_Weight_Unit(BaseCommand):
-	function = tools.setWeightUnit
-	def __init__(self, fnParams):
-		self.fnParams = fnParams 
-		self.name = f"{tools.LANG.chunk('weightName')[0]} {fnParams}" 
-		self.pixmap = os.path.join(ICONPATH, f"weight_{fnParams}.svg")
-		self.menuText = f"{tools.LANG.chunk('weightName')[0]} {fnParams}" 
-		self.toolTip = f"{tools.LANG.chunk('weightName')[0]} {fnParams}" 
-	def IsActive(self):
-		return tools.CURRENTUNIT != self.fnParams
-
-class Toggle_Report(BaseCommand):
-	function = tools.toggleReport
-	def __init__(self, fnParams):
-		self.fnParams = fnParams 
-		self.name = f"{tools.LANG.chunk('reportSet')[0]} {fnParams}{tools.LANG.chunk('reportSet')[1]}" 
-		self.pixmap = os.path.join(ICONPATH, f"report_{fnParams}.svg")
-		self.menuText = f"{tools.LANG.chunk('reportSet')[0]} {fnParams}{tools.LANG.chunk('reportSet')[1]}"
-		self.toolTip = f"{tools.LANG.chunk('reportSet')[0]} {fnParams}{tools.LANG.chunk('reportSet')[1]}"
-	def IsActive(self):
-		return self.fnParams != tools.CURRENTREPORT
