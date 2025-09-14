@@ -42,9 +42,11 @@ def update(version, description):
     if 'package.xml' in root_files:
         path = os.path.realpath(root_path + '/package.xml')
         if version:
-            rewrite(path, r'<version>.+?<\/version>', '<version>' + version + '</version>')
+            xmlversion = version.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
+            rewrite(path, r'<version>.+?<\/version>', '<version>' + xmlversion + '</version>')
         if description:
-             rewrite(path, r'<description>.+?<\/description>', '<description>' + description + '</description>')  
+            xmldescription = description.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
+            rewrite(path, r'<description>.+?<\/description>', '<description>' + xmldescription + '</description>')  
         rewrite(path, r'<date>.+?<\/date>', '<date>' + datetime.today().strftime('%Y-%m-%d') + '</date>')
         print(path + ' updated')
     if 'setup.py' in root_files:
@@ -56,7 +58,11 @@ def update(version, description):
              rewrite(path, r'description\s{0,}=\s{0,}["\'].+?["\']', 'description = "' + description + '"')
         print(path + ' updated')
 
-    print('please check if everything fits')
+    if version:
+        print(f'set to version "{version}"', end = ' with ' if description else None)
+    if description:
+        print(f'description "{description}"')
+    print ('please check if everything fits')
 
 def rewrite(path, re_search, re_replace):
     # read file
@@ -76,7 +82,8 @@ if __name__ == '__main__':
     options = {
         'h': '--help|-h',
         'v': '((?:--version|-v)[:\\s]+)([^\s]+)',
-        'd': '((?:--description|-d)[:\\s]+)([^\s]+)'
+        # this should come last after all other patterns have been detected and subtracted from the arguments
+        'd': '((?:--description|-d)[:\\s]+)(.+)'
     }
     params = ' '.join(sys.argv) + ' '
     version = None
@@ -89,7 +96,9 @@ if __name__ == '__main__':
         if opt == 'd' and bool(arg):
             description = arg[0][1]
             params = params.replace(''.join(arg[0]), '')
-    
+    if params:
+        print ("params could not be fully resolved, aborting:", params)
+
     if version or description:
         update(version, description)
     else:
