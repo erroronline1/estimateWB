@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
   <name>estimateWB</name>
-  <version>0.1.4</version>
-  <date>2025-09-13</date>
+  <version>0.1.5</version>
+  <date>2025-09-14</date>
   <description>estimate the volume &amp; weight of parts</description>
   <maintainer email="dev@erroronline.one">error on line 1</maintainer>
   <license file="LICENSE">LGPL-3.0-or-later</license>
@@ -17,7 +17,7 @@
       <classname>estimateWB</classname>
       <name>estimateWB</name>
       <description>estimate the volume &amp; weight of parts</description>
-      <version>0.1.4</version>
+      <version>0.1.5</version>
       <freecadmin>0.19.0</freecadmin>
       <!--depend>numpy</depend-->
       <tag>estimate</tag>

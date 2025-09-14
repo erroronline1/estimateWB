@@ -23,25 +23,28 @@ Some common 3d-printing materials are supported by default, but you can always s
 
 </details>
 
+### Version update
+* 0.1.5
+    * same functionality, new codebase
+    * settings as a single menu item and toolbar
+    * storing last selected preferences
+    * a lot of comments within the code for newcomers and future reference 
+
 ### Usage
 
-Select an object, part, group or body and at the push of a button of the workbench the desired output is displayed in the report view panel or as a popup.
+Select objects, parts, groups or bodies and at the push of a button of the workbench the desired output is displayed in the report view panel or as a popup.
 
-Four toolbars are available:
+Two toolbars are available:
 
-**Report**
+**Settings**
 * Select the desired report mode for report view or popup
-
-**Scale**
 * Select the desired output for the volume in mm³, cm³ or m³
+* Select the desired output for the weight in g, kg or lb 
 
 **Estimate**
 * The first option returns the volume of the selected object
 * The second option prompts you to provide a decimal density to return the estimated specific but custom weight
 * Any other option returns preset material weight estimations (currently ABS, NYLon, PA12, PolyCarbonate, PETG, PLA and TPU)
-
-**Weight Units**
-* Select the desired output for the weight in g, kg or lb 
 
 Thats all. Basically the workbench reads the objects shape.volume-property provided by FreeCAD, which is conveniently returned in mm³. So any output will be in metric units by default, lb and weight units toolbar work of [@zackwhit](https://github.com/zackwhit/). They also added a popup that has been applied to the volume as well in version 0.1.4 - now toggleable for either report view or popup.
 
