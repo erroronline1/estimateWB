@@ -40,7 +40,7 @@ class Settings():
                 if value:
                     self.current.update({type: value})
                     if type in["weightUnit", "sizeScale"]:
-                        self.current.update({type + "Factor": self.options.get(type)})
+                        self.current.update({type + "Factor": self.options.get(type).get(value)})
         except:
             pass
     
@@ -73,7 +73,7 @@ class Settings():
             FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Mod/estimateWB").SetString(type, value)
 
             if type in["weightUnit", "sizeScale"]:
-                self.current.update({type + "Factor": self.options.get(type)})
+                self.current.update({type + "Factor": self.options.get(type).get(value)})
 
         return None
 
