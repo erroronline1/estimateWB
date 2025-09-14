@@ -76,7 +76,7 @@ def estimateVolume(*void):
 			report(LANG.chunk("resultSelectionNoVolume"))
 		return
 
-	volume /= estimateSettings.get("sizeScaleFactor")
+	volume /= float(estimateSettings.get("sizeScaleFactor"))
 	
 	msg = LANG.chunk("resultHasVolumeOf", {":volume" : str(roundup(volume)) + estimateSettings.get("sizeScale") + "³"})
 	if estimateSettings.get("reportOutput") == "console":
@@ -123,7 +123,7 @@ def estimateWeight(material : str|None = None):
 	volume /= 1000
 	
 	mass = volume * density
-	mass = mass * estimateSettings.get("weightUnitFactor")
+	mass = mass * float(estimateSettings.get("weightUnitFactor"))
 
 	msg = LANG.chunk("resultNeedsMaterialOf", {":amount" : str(roundup(mass)) + estimateSettings.get("weightUnit"), ":material": material if material else ""})
 	if estimateSettings.get("reportOutput") == "console":
