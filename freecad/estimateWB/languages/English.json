@@ -1,44 +1,28 @@
 {
-    "wbToolTip": [
-        "Display a body's volume or weight to estimate costs of printing"
-    ],
+    "wbToolTip": "Display a body's volume or weight to estimate costs of printing",
 
-    "reportName": ["Report options"],
-    "reportMenuText": ["Report options"],
-    "reportToolTip": ["Toggle console and popup"],
-    "reportSet": ["Toggle", " output"],
+    "settingsMenuText": "Estimate Settings",
+    "reportOutput_Setting": "Toggle output to :option",
+    "sizeScale_Setting": "Display volume in :option³",
+    "weightUnit_Setting": "Set weight unit to :option",
 
-    "estimateVolumeName": ["Estimate volume"],
-    "estimateVolumeMenuText": ["Volume"],
-    "estimateVolumeToolTip": ["Selected body's approximate volume in cm³"],
+    "estimateMenuText": "Estimate",
+    "estimateVolumeName": "Volume",
+    "estimateVolumeToolTip": "Selected bodies approximate volume",
+    "estimateWeightCustomName": "Weight with custom density",
+    "estimateWeightCustomToolTip": "Selected body's approximate weight with custom density",
+    "estimateWeightName": "Estimate weight in :option",
+    "estimateWeightToolTip": "Selected body's approximate weight in :option",
 
-    "estimateWeightName": ["Estimate weight in", ""],
-    "estimateWeightMenuText": ["Weight in"],
-    "estimateWeightToolTip": ["Selected body's approximate weight in"],
+    "promptDensityTitle": "Custom",
+    "promptDensityText": "Enter density in g/cm³:",
+    "promptDensityError": "No processeable density entered, please use decimal numbers only...",
 
-    "estimateWeightCustomName": ["Estimate weight with custom density"],
-    "estimateWeightCustomMenuText": ["Weight with custom density"],
-    "estimateWeightCustomToolTip": [
-        "Selected body's approximate weight with custom density"
-    ],
-
-    "scaleName": ["Display volume in"],
-    "scaleMenuText": ["Display volume in"],
-    "scaleToolTip": ["Set display of volume to"],
-
-    "weightName": ["Set weight unit to"],
-
-    "volumePopTitle": ["Volume result"],
-    "weightPopTitle": ["Weight result"],
-    "weightPopCopy": ["Copy"],
-
-    "hasNoVolume": ["has no shape nor volume"],
-    "hasVolumeOf": ["Selection has a volume of"],
-    "needsMaterialOf": ["Selection needs about", "of "],
-    "densityPromptTitle": ["Custom"],
-    "densityPromptText": ["Enter density in g/cm^3:"],
-    "noDensityEntered": [
-        "No density entered, please use decimal numbers only..."
-    ],
-    "selectionNoVolume": ["None of the selected objects have a volume!"]
+    "resultVolumePopTitle": "Volume result",
+    "resultWeightPopTitle": "Weight result",
+    "resultWeightPopCopy": "Copy",
+    "resultHasNoVolume": ":object has neither shape nor volume",
+    "resultHasVolumeOf": "Selection has a volume of :volume",
+    "resultNeedsMaterialOf": "Selection needs about :amount of :material",
+    "resultSelectionNoVolume": "None of the selected objects have a volume!"
 }
