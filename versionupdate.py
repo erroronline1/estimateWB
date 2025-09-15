@@ -10,11 +10,10 @@ usage: versionupdate.py [ -h  | --help ]
                         [ -d  | --description ] DESCRIPTION
 
 updates the workbench version number and description on all relevant issued places like
-* manifest.ini
 * package.xml
-* setup.py
+* pyproject.toml
 
-because it affects so many different places. not in the readme though
+not in the readme though
 ''')
     
 def update(version, description):
@@ -32,13 +31,6 @@ def update(version, description):
         wb_path = None
     '''
 
-    if 'manifest.ini' in root_files:
-        path = os.path.realpath(root_path + '/manifest.ini')
-        if version:
-            rewrite(path, r'version=.+', 'version=' + version)
-        if description:
-            rewrite(path, r'description=.+', 'description=' + description)
-        print(path + ' updated')
     if 'package.xml' in root_files:
         path = os.path.realpath(root_path + '/package.xml')
         if version:
@@ -49,10 +41,9 @@ def update(version, description):
             rewrite(path, r'<description>.+?<\/description>', '<description>' + xmldescription + '</description>')  
         rewrite(path, r'<date>.+?<\/date>', '<date>' + datetime.today().strftime('%Y-%m-%d') + '</date>')
         print(path + ' updated')
-    if 'setup.py' in root_files:
-        path = os.path.realpath(root_path + '/setup.py')
+    if 'pyproject.toml' in root_files:
+        path = os.path.realpath(root_path + '/pyproject.toml')
         if version:
-            # does not replace imported variables by searching for literal values within quotes only
             rewrite(path, r'version\s{0,}=\s{0,}["\'].+?["\']', 'version = "' + version + '"')
         if description:
              rewrite(path, r'description\s{0,}=\s{0,}["\'].+?["\']', 'description = "' + description + '"')

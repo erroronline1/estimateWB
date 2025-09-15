@@ -1,0 +1,24 @@
+[project]
+name = "estimateWB"
+version = "0.1.5"
+description = "A FreeCAD workbench to estimate material quantity by volume or weight for selected parts"
+authors = [
+  {name = "error on line 1", email = "dev@erroronline.one"},
+]
+maintainers = [
+  {name = "error on line 1", email = "dev@erroronline.one"}
+]
+license = "LGPL-3.0-or-later"
+license-files = ["LICEN[CS]E.*"]
+readme = "README.md"
+keywords = ["estimate", "addon", "freecad", "workbench"]
+
+dependencies = [
+# "numpy"
+# see https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+# match with package.xml
+]
+requires-python = ">=3.8"
+classifiers = [
+  "Programming Language :: Python"
+]
