@@ -3,7 +3,7 @@
 A FreeCAD workbench to estimate material quantity by volume or weight for selected parts
 
 ### Background
-This frankenstein's monster of a workbench for FreeCAD has been somehow sewn together to work almost as expected.
+[This frankenstein's monster of a workbench](#about-the-code) for FreeCAD has been somehow sewn together to work almost as expected.
 
 You can display the volume or expected weight of selected objects at the push of a button. Both display with the decimal precision as set in FreeCAD's settings (2 by default if not specified). Rounding has been adjusted to ignore floating point offsets and limit confusion with defined 1cm³ cubes displaying 1.01 cm³. This might lead to a slight but most likely negligible rounding error, as the output enables you to estimate or calculate the necessary amount of material for additive manufacturing - @100 % infill, ignoring support structures, purging and other slicer settings that add anyway.
 
@@ -68,8 +68,6 @@ This workbench can be installed manually by adding the whole folder into the per
 - for Windows as portable app `wherever_stored\FreeCADPortable\Data\FreeCADAppData\Mod`
 - for macOS `~/Library/Preferences/FreeCAD/Mod/`
 
-Occasionally rename from estimateWB-master to estimateWB if downloaded as zip from github
-
 </details>
 
 ### Customize
@@ -81,6 +79,21 @@ Different languages according to user settings are technically supported - but a
 ### Bug/Feedback
 
 Please report bugs to the [issue queue](https://github.com/erroronline1/estimateWB/issues) and ping the [dedicated estimateWB FreeCAD forum thread](https://forum.freecadweb.org/viewtopic.php?f=22&t=67078) to discuss said issue or feedback in general.   
+
+### About the code
+Base of everything has been
+* [freecad.workbench_starterkit](https://github.com/FreeCAD/freecad.workbench_starterkit/tree/master/freecad/workbench_starterkit) and
+* [gears workbench](https://github.com/looooo/freecad.gears/tree/master/freecad/gears)
+
+[Phonedroid](https://github.com/PhoneDroid) reached out to me in 9/25 if I would still be interested in keeping this workbench maintained. Since then I refactored the code as an attempt to declutter everything a bit. Also they stated the workbench_starterkit might be out of date. I followed the kind recommendations and tried to leave as much comments as reasonable in the code for anyone else to have a decent start for their own workbench:
+* the folder structure is valid (root and /freecad/{workbench name})
+* the BaseCommand supports multiple parameters for function calls
+* you'll need basically only the
+    * package.xml,
+    * \_\_init__.py and
+    * init_gui.py
+* pyproject.toml is not mandatory but the way to go if you are in need to define dependent modules not part of the default python libraries
+* the distribution of other files as well as the language model are just a decision, versionupdate.py is not more than a tiny helper tool you can easily omit. as far as i understand everything *could* go into the init_gui.py only.
 
 ## License
 
