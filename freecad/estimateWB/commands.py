@@ -15,7 +15,8 @@ class BaseCommand():
 		* tooltip
 
 		available commands (classes extending the base command) are initialized with their
-		respective properties before FreeCAD calls their methods on interaction
+		respective properties before FreeCAD calls their methods on interaction.
+		basically there is no need to change anything in this class as far as i know
 	"""
 	fnParams = {}
 	FreeCADGui.doCommandGui("import freecad.estimateWB.commands")
@@ -30,7 +31,7 @@ class BaseCommand():
 
 	def Activated(self):
 		"""
-			as opposed to the online ressources the parameters are converted to a tuple and json for string passing
+			as opposed to the online ressources the parameters are converted to a tuple and json for string passing.
 			this allows for multiple parameters for commands
 		"""
 		FreeCADGui.doCommandGui(f"freecad.estimateWB.commands.{self.__class__.__name__}.do('{json.dumps(self.fnParams)}')")
@@ -57,7 +58,7 @@ class Estimate_Volume(BaseCommand):
 ################################################################################
 
 class Estimate_Weight(BaseCommand):
-	# TMYK: with a parameter for the function the command has to be set up with __init__
+	# TMYK: with a parameter for the function the command has to be set up with __init__()
 	function = tools.estimateWeight
 	def __init__(self, *fnParams):
 		self.fnParams = fnParams
@@ -87,9 +88,9 @@ class Set_estimateSettings(BaseCommand):
 		* reportOutput - console and popup
 
 		icons have to be named accordingly fnParams[0]_fnParams[1].svg
-		language chunks as well
+		language chunks should start with fnParams[0] as well
 
-		see __init__.py and languages/*.json
+		see __init__.py resources.LANG and languages/*.json
 	"""
 	function = estimateSettings.set
 	def __init__(self, *fnParams):
