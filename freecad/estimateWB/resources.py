@@ -25,7 +25,8 @@ class language:
 	def __init__(self):
 		# try to open the language file according to FreeCAD settings, default to english
 		try:
-			with open(languagefiles / f"{FreeCAD.ParamGet("User parameter:BaseApp/Preferences/General").GetString("Language")}.json", "r") as jsonfile:
+			language = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/General").GetString("Language")
+			with open(languagefiles / f"{language}.json", "r") as jsonfile:
 				self.language = json.loads(jsonfile.read().replace("\n", ""))
 		except:
 			with open(languagefiles / "English.json", "r") as jsonfile:
