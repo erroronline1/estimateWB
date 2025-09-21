@@ -5,7 +5,7 @@
    viewBox="0 0 64.499998 64.499998"
    version="1.1"
    id="svg1038"
-   sodipodi:docname="report_console.svg"
+   sodipodi:docname="reportOutput_console.svg"
    inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -25,8 +25,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1.8172158"
-     inkscape:cx="90.523098"
-     inkscape:cy="135.37193"
+     inkscape:cx="90.523096"
+     inkscape:cy="135.37192"
      inkscape:window-width="1920"
      inkscape:window-height="1130"
      inkscape:window-x="912"
@@ -46,26 +46,17 @@
   </metadata>
   <defs
      id="defs1042" />
-  <g
-     id="layer1"
-     transform="translate(-51.412465,-30.276999)">
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:20.3;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       id="rect1"
-       width="51.281212"
-       height="48.920994"
-       x="58.349453"
-       y="38.066502" />
-    <text
-       xml:space="preserve"
-       style="font-weight:bold;font-size:37.3884px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:0.4;stroke-linecap:round"
-       x="62.040585"
-       y="71.009323"
-       id="text1"><tspan
-         sodipodi:role="line"
-         id="tspan1"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Garuda;-inkscape-font-specification:Garuda;fill:#ffffff;fill-opacity:1;stroke-width:0.4"
-         x="62.040585"
-         y="71.009323">&gt;_</tspan></text>
-  </g>
+  <rect
+     style="fill:#2e3440;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:20.3;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     id="rect1"
+     width="51.281212"
+     height="48.920994"
+     x="58.349453"
+     y="38.066502"
+     transform="translate(-51.412465,-30.276998)" />
+  <path
+     style="font-weight:bold;font-stretch:semi-condensed;font-size:37.3884px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold Semi-Condensed';fill:#e5e9f0;stroke-width:0.4;stroke-linecap:round"
+     d="m 13.129718,22.969185 v -4.564014 l 21.067487,8.452554 v 4.308429 L 13.129718,39.618707 V 35.054693 L 28.99423,29.030195 Z m 41.459501,23.112166 v 3.46865 H 37.757136 v -3.46865 z"
+     id="text1"
+     aria-label="&gt;_" />
 </svg>
