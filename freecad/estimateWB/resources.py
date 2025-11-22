@@ -16,7 +16,7 @@ def icon(name: str):
 
 
 with resources.as_file(resourcefiles / "materials.json") as path:
-	with open(str(path), "r") as jsonfile:
+	with open(str(path), "r", encoding="utf-8") as jsonfile:
 		""" preparing the material list with names and densities """
 		materials = json.loads(jsonfile.read().replace("\n", ""))
 
@@ -26,10 +26,10 @@ class language:
 		# try to open the language file according to FreeCAD settings, default to english
 		try:
 			language = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/General").GetString("Language")
-			with open(languagefiles / f"{language}.json", "r") as jsonfile:
+			with open(languagefiles / f"{language}.json", "r", encoding="utf-8") as jsonfile:
 				self.language = json.loads(jsonfile.read().replace("\n", ""))
 		except:
-			with open(languagefiles / "English.json", "r") as jsonfile:
+			with open(languagefiles / "English.json", "r", encoding="utf-8") as jsonfile:
 				self.language = json.loads(jsonfile.read().replace("\n", ""))
 	
 
