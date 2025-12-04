@@ -78,7 +78,7 @@ Different languages according to user settings are technically supported - but a
 
 ### Bug/Feedback
 
-Please report bugs to the [issue queue](https://github.com/erroronline1/estimateWB/issues) and ping the [dedicated estimateWB FreeCAD forum thread](https://forum.freecadweb.org/viewtopic.php?f=22&t=67078) to discuss said issue or feedback in general.   
+Please report bugs to the [issue queue](https://github.com/erroronline1/estimateWB/issues) and ping the [dedicated estimateWB FreeCAD forum thread](https://forum.freecad.org/viewtopic.php?f=22&t=67078) to discuss said issue or feedback in general.   
 
 ### About the code
 Base of everything has been
