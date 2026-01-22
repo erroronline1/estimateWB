@@ -1,31 +1,102 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
-  <name>estimateWB</name>
-  <version>0.1.5</version>
-  <date>2025-09-15</date>
-  <description>A FreeCAD workbench to estimate material quantity by volume or weight for selected parts</description>
-  <maintainer email="dev@erroronline.one">error on line 1</maintainer>
-  <license file="LICENSE">LGPL-3.0-or-later</license>
-  <icon>freecad/estimateWB/resources/icon.svg</icon>
-  <url type="repository" branch="master">https://github.com/erroronline1/estimateWB</url>
-  <url type="readme">https://github.com/erroronline1/estimateWB/blob/master/README.md</url>
-  <url type='bugtracker'>https://github.com/erroronline1/estimateWB/issues</url>
+<?xml
+    version = '1.0'
+    encoding = 'UTF-8'
+    standalone = 'no'
+?>
+<package
+    format = '1'
+    xmlns = 'https://wiki.freecad.org/Package_Metadata'
+>
 
-  <content>
-    <workbench>
-      <icon>freecad/estimateWB/resources/icon.svg</icon>
-      <subdirectory>./</subdirectory>
-      <classname>estimateWB</classname>
-      <name>estimateWB</name>
-      <description>A FreeCAD workbench to estimate material quantity by volume or weight for selected parts</description>
-      <version>0.1.5</version>
-      <freecadmin>0.19.0</freecadmin>
-      <!--depend>numpy</depend-->
-      <!--depend>match with pyproject.toml</depend-->
-      <tag>estimate</tag>
-      <tag>volume</tag>
-      <tag>weight</tag>
-    </workbench>
-  </content>
+    <!--[ Versions ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <freecadmin>0.19.0</freecadmin>
+    <version>0.1.5</version>
+    <date>2025-09-15</date>
+
+    <!--[ Info ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <description>A FreeCAD workbench to estimate material quantity by volume or weight for selected parts</description>
+    <name>estimateWB</name>
+
+    <!--[ Tags ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <tag>estimate</tag>
+    <tag>volume</tag>
+    <tag>weight</tag>
+
+    <!--[ Maintainers ]――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <maintainer
+        email = 'dev@erroronline.one'
+    >error on line 1</maintainer>
+
+    <!--[ Authors ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <author
+        email = 'dev@erroronline.one'
+    >error on line 1</author>
+
+    <!--[ Licenses ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <license
+        file = 'LICENSE'
+    >LGPL-3.0-or-later</license>
+
+    <!--[ Icon ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <icon>freecad/estimateWB/resources/icon.svg</icon>
+
+    <!--[ Urls ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <url
+        type = 'documentation'
+    >https://github.com/erroronline1/estimateWB</url>
+
+    <url
+        branch = 'main'
+        type = 'repository'
+    >https://github.com/erroronline1/estimateWB</url>
+
+    <url
+        type = 'bugtracker'
+    >https://github.com/erroronline1/estimateWB/issues</url>
+    
+    <url
+        type = 'discussion'
+    >https://forum.freecad.org/viewtopic.php?f=22&t=67078</url>
+
+    <url
+        type = 'website'
+    >https://github.com/erroronline1/estimateWB</url>
+
+    <url
+        type = 'readme'
+    >https://github.com/erroronline1/estimateWB/blob/main/Overview.md</url>
+
+    <!--[ Content ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <content>
+
+        <!--[ Workbench ]――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+        <workbench>
+
+            <name>estimateWB</name>
+            <description>A FreeCAD workbench to estimate material quantity by volume or weight for selected parts</description>
+
+            <subdirectory>./</subdirectory>
+            <classname>estimateWB</classname>
+
+            <!--depend>numpy</depend-->
+            <!--depend>match with pyproject.toml</depend-->
+
+            <tag>estimate</tag>
+            <tag>volume</tag>
+            <tag>weight</tag>
+        
+        </workbench>
+
+    </content>
 
 </package>
