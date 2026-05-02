@@ -14,7 +14,7 @@ Some common 3d-printing materials are supported by default, but you can always s
 ### Version compatibility
 
 <details>
-<summary>Confirmed latest stable FreeCad version 1.0 - Expand for more</summary>
+<summary>Confirmed latest stable FreeCad version 1.1 - Expand for more</summary>
 
 * 1.1rc build 40041 x86_64
 * 1.0
